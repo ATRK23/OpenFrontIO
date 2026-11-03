@@ -215,6 +215,7 @@ export class CreditsModal extends BaseModal {
   }
 
   protected onOpen(): void {
+    document.dispatchEvent(new Event("credits-opened"));
     this.stopAutoScroll();
     this.closing = false;
     this.classList.remove("credits-leaving", "credits-entering");
@@ -228,6 +229,7 @@ export class CreditsModal extends BaseModal {
   }
 
   protected onClose(): void {
+    document.dispatchEvent(new Event("credits-closed"));
     this.stopAutoScroll();
     this.unbindScrollListener();
     this.classList.remove("credits-entering", "credits-leaving");
