@@ -1,0 +1,54 @@
+name: Update credits GitHub contributors
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - src/client/generated/CreditsGithubContributors.ts
+  schedule:
+    - cron: "0 8 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update-credits-github-contributors
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: Generate credits contributor list
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/credits/generateGithubContributors.mjs
+      - name: Open or update the credits pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- src/client/generated/CreditsGithubContributors.ts; then
+            exit 0
+          fi
+
+          branch=automation/update-credits-github-contributors
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$branch"
+          git add src/client/generated/CreditsGithubContributors.ts
+          git commit -m "Update credits GitHub contributors"
+          git push --force "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:refs/heads/$branch"
+
+          if gh pr list --head "$branch" --state open --json number --jq 'length == 0' | grep -qx true; then
+            gh pr create --base main --head "$branch" --title "Update credits GitHub contributors" --body "Automated update from GitHub's repository contributors API."
+          fi

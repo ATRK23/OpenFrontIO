@@ -22,6 +22,10 @@ export class OModal extends LitElement {
   @property({ type: Boolean })
   public alwaysMaximized = false;
 
+  /** Full-viewport overlay variant for immersive, non-dialog surfaces. */
+  @property({ type: Boolean })
+  public fullScreen = false;
+
   @property({ type: Boolean })
   public hideCloseButton = false;
 
@@ -216,9 +220,11 @@ export class OModal extends LitElement {
 
     const wrapperClass = this.inline
       ? "relative flex flex-col w-full h-full m-0 max-w-full max-h-none shadow-none"
-      : `relative flex flex-col w-full h-full lg:w-[90%] lg:h-auto lg:min-w-[400px] lg:max-w-[900px] lg:m-8 lg:rounded-lg lg:max-h-[calc(100vh-4rem)] ${
-          this.alwaysMaximized ? "h-auto" : ""
-        }`;
+      : this.fullScreen
+        ? "relative flex flex-col w-full h-full m-0 max-w-none max-h-none shadow-none"
+        : `relative flex flex-col w-full h-full lg:w-[90%] lg:h-auto lg:min-w-[400px] lg:max-w-[900px] lg:m-8 lg:rounded-lg lg:max-h-[calc(100vh-4rem)] ${
+            this.alwaysMaximized ? "h-auto" : ""
+          }`;
     const wrapperStyle =
       !this.inline && this.maxWidth ? `max-width: ${this.maxWidth};` : "";
 
@@ -228,9 +234,13 @@ export class OModal extends LitElement {
     // not `in-[.page-open]:` as in MainLayout: this renders in a shadow root,
     // which body.page-open can't reach, and an inline modal only shows while
     // its page is open anyway.
-    const sectionClass = `relative flex-1 min-h-0 flex flex-col text-white bg-black/70 backdrop-blur-xl lg:rounded-2xl lg:border border-white/10 overflow-hidden ${
-      this.inline ? "compact:rounded-none! compact:border-0!" : ""
-    }`;
+    const sectionClass = `relative flex-1 min-h-0 flex flex-col text-white ${
+      this.fullScreen ? "bg-slate-950/55" : "bg-black/70"
+    } backdrop-blur-xl overflow-hidden ${
+      this.fullScreen
+        ? "rounded-none border-0"
+        : "lg:rounded-2xl lg:border border-white/10"
+    } ${this.inline ? "compact:rounded-none! compact:border-0!" : ""}`;
 
     return html`
       <aside

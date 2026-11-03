@@ -985,6 +985,16 @@
     "withdraw": "Withdraw",
     "your_friends": "Your Friends"
   },
+  "credits": {
+    "community_contributors": "GitHub Contributors",
+    "contributors_description": "Thank you to everyone who helps improve OpenFront.",
+    "legal_and_other": "Acknowledgements & Licences",
+    "legal_description": "Licences, attributions and other acknowledgements.",
+    "project_maintainer": "Project Maintainer",
+    "team": "OpenFront Team",
+    "thank_you_for_playing": "Thank you for playing",
+    "title": "Credits"
+  },
   "fullscreen": {
     "enter": "Enter fullscreen",
     "exit": "Exit fullscreen"

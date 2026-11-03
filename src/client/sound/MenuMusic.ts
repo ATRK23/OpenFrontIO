@@ -5,6 +5,7 @@ import { AudioMixer, streamsMusic } from "./AudioMixer";
 // Long enough not to sound like a cut, short enough that the lobby is not
 // still playing menu music when the map appears.
 const MENU_FADE_MS = 700;
+const CREDITS_THEME_TRANSITION_MS = 350;
 
 // An ease-in, not a swell. Long enough that the theme arrives rather than
 // lands, short enough that the page is not still getting louder while the
@@ -91,6 +92,10 @@ export function startMenuMusic(
   // policy. Never cleared: activation is sticky for the life of the document.
   let gestured = false;
   let teardownFadeIn: (() => void) | null = null;
+  let creditsOpen = false;
+  let creditsTheme: Howl | null = null;
+  let pausedMenuTheme: Howl | null = null;
+  let cancelMenuPause: (() => void) | null = null;
 
   /**
    * Stops the ramp wherever it is, leaving the volume untouched.
@@ -199,7 +204,7 @@ export function startMenuMusic(
   };
 
   const start = () => {
-    if (theme !== null) return;
+    if (creditsOpen || theme !== null) return;
     // Nothing to hear on a channel the player has turned off, and on the Web
     // Audio path starting means holding the whole theme decoded. The mixer
     // subscription below starts it if music is turned on later, so declining
@@ -236,11 +241,93 @@ export function startMenuMusic(
     }
   };
 
+  const startCreditsTheme = () => {
+    if (
+      !creditsOpen ||
+      creditsTheme !== null ||
+      !gestured ||
+      !mixer.isAudible("music")
+    ) {
+      return;
+    }
+    try {
+      const streaming = streamsMusic();
+      creditsTheme = new Howl({
+        src: [assetUrl("sounds/music/credits-theme.mp3")],
+        loop: true,
+        volume: 0,
+        html5: streaming,
+        preload: streaming,
+      });
+      mixer.register(creditsTheme, "music");
+      creditsTheme.volume(0);
+      if (creditsTheme.state() === "unloaded") creditsTheme.load();
+      creditsTheme.play();
+      creditsTheme.fade(
+        0,
+        mixer.volumeFor("music"),
+        CREDITS_THEME_TRANSITION_MS,
+      );
+    } catch (error) {
+      creditsTheme = null;
+      console.warn("Failed to play credits theme", error);
+    }
+  };
+
+  const stopCreditsTheme = () => {
+    if (creditsTheme === null) return;
+    const ending = creditsTheme;
+    creditsTheme = null;
+    mixer.unregister(ending);
+    const stop = () => {
+      ending.stop();
+      ending.unload();
+    };
+    const from = ending.volume() as number;
+    if (from === 0) {
+      stop();
+      return;
+    }
+    ending.fade(from, 0, CREDITS_THEME_TRANSITION_MS);
+    ending.once("fade", stop);
+  };
+
+  const pauseMenuTheme = () => {
+    if (theme === null || pausedMenuTheme === theme) return;
+    const pausing = theme;
+    cancelFadeIn();
+    mixer.unregister(pausing);
+    pausedMenuTheme = pausing;
+    const pause = () => {
+      pausing.pause();
+      cancelMenuPause = null;
+    };
+    cancelMenuPause = () => pausing.off("fade", pause);
+    const from = pausing.volume() as number;
+    if (from === 0) {
+      pause();
+      return;
+    }
+    pausing.fade(from, 0, CREDITS_THEME_TRANSITION_MS);
+    pausing.once("fade", pause);
+  };
+
+  const resumeMenuTheme = () => {
+    if (pausedMenuTheme === null || !mixer.isAudible("music")) return;
+    const paused = pausedMenuTheme;
+    pausedMenuTheme = null;
+    cancelMenuPause?.();
+    cancelMenuPause = null;
+    fadeIn(paused);
+    paused.play();
+  };
+
   // Records the interaction before starting, so a start declined for a silent
   // channel still leaves the document activated for a later one.
   const onGesture = () => {
     gestured = true;
-    start();
+    if (creditsOpen) startCreditsTheme();
+    else start();
   };
 
   // Removing first keeps arm() idempotent, so a second "menu-restored" -- or
@@ -291,14 +378,47 @@ export function startMenuMusic(
     const audible = mixer.isAudible("music");
     const turnedOn = audible && !wasAudible;
     wasAudible = audible;
-    if (turnedOn && armed && gestured) start();
+    if (!turnedOn || !gestured) return;
+    if (creditsOpen) {
+      startCreditsTheme();
+    } else if (pausedMenuTheme !== null) {
+      resumeMenuTheme();
+    } else if (armed) {
+      start();
+    }
+  });
+
+  document.addEventListener("credits-opened", () => {
+    creditsOpen = true;
+    pauseMenuTheme();
+    startCreditsTheme();
+  });
+
+  document.addEventListener("credits-closed", () => {
+    creditsOpen = false;
+    stopCreditsTheme();
+    if (pausedMenuTheme !== null) {
+      resumeMenuTheme();
+    } else if (armed && gestured) {
+      start();
+    }
   });
 
   document.addEventListener("game-starting", () => {
     disarm();
+    stopCreditsTheme();
     if (theme === null) return;
     const ending = theme;
     theme = null;
+    if (pausedMenuTheme === ending) {
+      pausedMenuTheme = null;
+      cancelMenuPause?.();
+      cancelMenuPause = null;
+      mixer.unregister(ending);
+      ending.stop();
+      ending.unload();
+      return;
+    }
     // Stop the ramp before anything else: it would otherwise keep writing
     // volumes over the fade-out below, and its settle would hand a theme on
     // its way out back to the mixer, which would then go on writing to an

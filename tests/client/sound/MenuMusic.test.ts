@@ -22,6 +22,7 @@ vi.mock("howler", () => {
     // model it: calling play() here makes no sound, and `begin()` is what
     // playback starting looks like.
     play = vi.fn();
+    pause = vi.fn();
     stop = vi.fn();
     unload = vi.fn();
     fade = vi.fn();
@@ -117,6 +118,8 @@ afterEach(() => {
 });
 
 const themes = () => howlInstances.filter((h) => h.src.includes("menu-theme"));
+const creditsThemes = () =>
+  howlInstances.filter((h) => h.src.includes("credits-theme"));
 
 /** Stands in for a browser that does (or does not) support the selector. */
 function setVolumeLocked(result: boolean | "unsupported") {
@@ -162,6 +165,30 @@ const lastVolume = (howl: any) => {
 };
 
 describe("menu music", () => {
+  it("replaces the menu theme with the credits theme until credits close", () => {
+    startMenuMusic(mixer);
+    document.dispatchEvent(new Event("pointerdown"));
+    const menuTheme = themes()[0];
+    menuTheme.volume.mockReturnValue(musicLevel);
+
+    document.dispatchEvent(new Event("credits-opened"));
+    const creditsTheme = creditsThemes()[0];
+    expect(menuTheme.fade).toHaveBeenCalledOnce();
+    expect(creditsTheme.src).toContain("sounds/music/credits-theme.mp3");
+    expect(creditsTheme.play).toHaveBeenCalledOnce();
+    expect(creditsTheme.fade).toHaveBeenCalledOnce();
+    menuTheme._fire("fade");
+    expect(menuTheme.pause).toHaveBeenCalledOnce();
+
+    creditsTheme.volume.mockReturnValue(musicLevel);
+    document.dispatchEvent(new Event("credits-closed"));
+    expect(creditsTheme.fade).toHaveBeenCalledTimes(2);
+    creditsTheme._fire("fade");
+    expect(creditsTheme.stop).toHaveBeenCalledOnce();
+    expect(creditsTheme.unload).toHaveBeenCalledOnce();
+    expect(menuTheme.play).toHaveBeenCalledTimes(2);
+  });
+
   it("streams the theme rather than decoding it up front", () => {
     startMenuMusic(mixer);
     // Browsers block audio until a gesture, so the Howl is only built here.

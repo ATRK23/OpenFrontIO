@@ -499,6 +499,7 @@ class Client {
       pageId: "page-leaderboard",
     });
     modalRouter.register("clan", { tag: "clan-modal", pageId: "page-clan" });
+    modalRouter.register("credits", { tag: "credits-modal" });
     modalRouter.register("account", {
       tag: "account-modal",
       pageId: "page-account",

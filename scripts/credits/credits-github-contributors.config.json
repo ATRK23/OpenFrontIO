@@ -1,0 +1,3 @@
+{
+  "excludedLogins": ["claude", "dependabot"]
+}
