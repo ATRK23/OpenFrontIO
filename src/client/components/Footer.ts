@@ -131,7 +131,12 @@ export class Footer extends LitElement {
               target="_blank"
               class="hover:text-white transition-colors"
             ></a>
-            <span data-i18n="main.copyright"></span>
+            <button
+              type="button"
+              @click=${() => (window.location.hash = "modal=credits")}
+              class="hover:text-white transition-colors"
+              data-i18n="main.copyright"
+            ></button>
             <a
               href="/privacy-policy.html"
               data-i18n="main.privacy_policy"

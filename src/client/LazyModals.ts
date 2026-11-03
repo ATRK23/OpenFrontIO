@@ -15,6 +15,7 @@ const modules: Record<string, () => Promise<unknown>> = {
   "account-settings-modal": () => import("./AccountSettingsModal"),
   "change-username-modal": () => import("./ChangeUsernameModal"),
   "clan-modal": () => import("./ClanModal"),
+  "credits-modal": () => import("./CreditsModal"),
   "detailed-view-modal": () => import("./components/DetailedGameViewModal"),
   "game-stats-modal": () => import("./GameStatsModal"),
   "help-modal": () => import("./HelpModal"),
