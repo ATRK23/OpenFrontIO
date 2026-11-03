@@ -8,8 +8,12 @@ import { prefersReducedMotion } from "./utilities/ReducedMotion";
 import { textDirection, translateText } from "./Utils";
 
 const EXIT_ANIMATION_MS = 180;
-const AUTO_SCROLL_DELAY_MS = 5_000;
-const AUTO_SCROLL_PIXELS_PER_SECOND = 18;
+const TEXT_FADE_IN_MS = 450;
+const LAST_CREDITS_DELAY_MS = 2_900;
+const AUTO_SCROLL_DELAY_MS = LAST_CREDITS_DELAY_MS + TEXT_FADE_IN_MS;
+const AUTO_SCROLL_RESUME_DELAY_MS = 5_000;
+const AUTO_SCROLL_PIXELS_PER_SECOND = 50;
+const MAX_AUTO_SCROLL_FRAME_MS = 100;
 
 /**
  * The legal attribution text remains in CREDITS.md, its existing source of
@@ -24,6 +28,9 @@ export class CreditsModal extends BaseModal {
   private autoScrollTimer: ReturnType<typeof setTimeout> | undefined;
   private autoScrollFrame: number | undefined;
   private lastScrollFrameAt: number | undefined;
+  private autoScrollPosition = 0;
+  private scrollContainer: HTMLElement | undefined;
+  private expectedAutoScrollTop: number | undefined;
 
   protected modalConfig() {
     return {
@@ -72,7 +79,7 @@ export class CreditsModal extends BaseModal {
         credits-modal.credits-entering [data-credits-section],
         credits-modal.credits-entering [data-credits-closing] {
           opacity: 0;
-          animation: credits-copy-in 600ms ease-out both;
+          animation: credits-copy-in ${TEXT_FADE_IN_MS}ms ease-out both;
         }
         credits-modal.credits-entering [data-credits-opening] {
           animation-delay: 240ms;
@@ -87,7 +94,7 @@ export class CreditsModal extends BaseModal {
           animation-delay: 2.2s;
         }
         credits-modal.credits-entering [data-credits-closing] {
-          animation-delay: 2.9s;
+          animation-delay: ${LAST_CREDITS_DELAY_MS}ms;
         }
         @media (prefers-reduced-motion: reduce) {
           credits-modal.credits-entering > o-modal,
@@ -102,10 +109,6 @@ export class CreditsModal extends BaseModal {
       <div
         dir=${textDirection()}
         class="mx-auto w-full max-w-6xl px-5 py-10 text-center sm:px-10 sm:py-16 lg:px-16"
-        @wheel=${this.stopAutoScroll}
-        @touchstart=${this.stopAutoScroll}
-        @pointerdown=${this.stopAutoScroll}
-        @keydown=${this.stopAutoScroll}
       >
         <p
           data-credits-opening
@@ -208,16 +211,15 @@ export class CreditsModal extends BaseModal {
     if (prefersReducedMotion()) return;
     requestAnimationFrame(() => {
       if (!this.isOpen()) return;
+      this.bindScrollListener();
       this.classList.add("credits-entering");
-      this.autoScrollTimer = setTimeout(
-        () => this.startAutoScroll(),
-        AUTO_SCROLL_DELAY_MS,
-      );
+      this.scheduleAutoScroll(AUTO_SCROLL_DELAY_MS);
     });
   }
 
   protected onClose(): void {
     this.stopAutoScroll();
+    this.unbindScrollListener();
     this.classList.remove("credits-entering", "credits-leaving");
     this.closing = false;
   }
@@ -237,12 +239,15 @@ export class CreditsModal extends BaseModal {
 
   disconnectedCallback(): void {
     this.stopAutoScroll();
+    this.unbindScrollListener();
     super.disconnectedCallback();
   }
 
   private startAutoScroll(): void {
     if (!this.isOpen() || this.closing || prefersReducedMotion()) return;
     this.lastScrollFrameAt = undefined;
+    this.autoScrollPosition = this.modalEl?.getScrollTop() ?? 0;
+    this.expectedAutoScrollTop = undefined;
     this.autoScrollFrame = requestAnimationFrame(this.autoScroll);
   }
 
@@ -254,15 +259,62 @@ export class CreditsModal extends BaseModal {
       this.autoScrollFrame = requestAnimationFrame(this.autoScroll);
       return;
     }
-    const previous = modal.getScrollTop();
-    const elapsed = now - this.lastScrollFrameAt;
-    this.lastScrollFrameAt = now;
-    modal.setScrollTop(
-      previous + (elapsed / 1_000) * AUTO_SCROLL_PIXELS_PER_SECOND,
+    const elapsed = Math.min(
+      now - this.lastScrollFrameAt,
+      MAX_AUTO_SCROLL_FRAME_MS,
     );
-    if (modal.getScrollTop() <= previous) return;
+    this.lastScrollFrameAt = now;
+    this.autoScrollPosition +=
+      (elapsed / 1_000) * AUTO_SCROLL_PIXELS_PER_SECOND;
+    modal.setScrollTop(this.autoScrollPosition);
+    const current = modal.getScrollTop();
+    this.expectedAutoScrollTop = current;
+
+    if (
+      this.scrollContainer !== undefined &&
+      current >=
+        this.scrollContainer.scrollHeight - this.scrollContainer.clientHeight
+    ) {
+      this.autoScrollFrame = undefined;
+      return;
+    }
     this.autoScrollFrame = requestAnimationFrame(this.autoScroll);
   };
+
+  private bindScrollListener(): void {
+    const scrollContainer =
+      this.modalEl?.shadowRoot?.querySelector<HTMLElement>(
+        "[data-modal-scroll]",
+      );
+    if (scrollContainer === this.scrollContainer) return;
+    this.unbindScrollListener();
+    scrollContainer?.addEventListener("scroll", this.handleScroll);
+    this.scrollContainer = scrollContainer ?? undefined;
+  }
+
+  private unbindScrollListener(): void {
+    this.scrollContainer?.removeEventListener("scroll", this.handleScroll);
+    this.scrollContainer = undefined;
+  }
+
+  private handleScroll = (event: Event): void => {
+    const scrollTop = (event.currentTarget as HTMLElement).scrollTop;
+    if (scrollTop === this.expectedAutoScrollTop) {
+      this.expectedAutoScrollTop = undefined;
+      return;
+    }
+    this.stopAutoScroll();
+    if (!this.closing && this.isOpen()) {
+      this.scheduleAutoScroll(AUTO_SCROLL_RESUME_DELAY_MS);
+    }
+  };
+
+  private scheduleAutoScroll(delay: number): void {
+    if (this.autoScrollTimer !== undefined) {
+      clearTimeout(this.autoScrollTimer);
+    }
+    this.autoScrollTimer = setTimeout(() => this.startAutoScroll(), delay);
+  }
 
   private stopAutoScroll = (): void => {
     if (this.autoScrollTimer !== undefined) {
@@ -274,5 +326,7 @@ export class CreditsModal extends BaseModal {
       this.autoScrollFrame = undefined;
     }
     this.lastScrollFrameAt = undefined;
+    this.autoScrollPosition = 0;
+    this.expectedAutoScrollTop = undefined;
   };
 }
