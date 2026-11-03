@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it } from "vitest";
 import { CreditsModal } from "../../src/client/CreditsModal";
+import { githubContributors } from "../../src/client/generated/CreditsGithubContributors";
 
 describe("credits-modal", () => {
   let modal: CreditsModal | undefined;
@@ -26,6 +27,11 @@ describe("credits-modal", () => {
     expect(legal?.textContent).toContain("OpenStreetMap");
     expect(modal.querySelector("[data-credits-opening]")).not.toBeNull();
     expect(modal.querySelector("[data-credits-closing]")).not.toBeNull();
+    const contributorLinks = modal.querySelectorAll<HTMLAnchorElement>(
+      "[data-github-contributor]",
+    );
+    expect(contributorLinks).toHaveLength(githubContributors.length);
+    expect(contributorLinks[0]?.href).toBe(githubContributors[0]?.profileUrl);
     expect(
       team!.compareDocumentPosition(contributors!) &
         Node.DOCUMENT_POSITION_FOLLOWING,

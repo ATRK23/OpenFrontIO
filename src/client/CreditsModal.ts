@@ -3,6 +3,7 @@ import { customElement } from "lit/decorators.js";
 import creditsMarkdown from "../../CREDITS.md?raw";
 import { BaseModal } from "./components/BaseModal";
 import { modalHeader } from "./components/ui/ModalHeader";
+import { githubContributors } from "./generated/CreditsGithubContributors";
 import { renderMarkdown } from "./Markdown";
 import { prefersReducedMotion } from "./utilities/ReducedMotion";
 import { textDirection, translateText } from "./Utils";
@@ -153,14 +154,23 @@ export class CreditsModal extends BaseModal {
           <p class="mt-5 text-base leading-relaxed text-white/70 sm:text-lg">
             ${translateText("credits.contributors_description")}
           </p>
-          <a
-            href="https://github.com/openfrontio/OpenFrontIO/graphs/contributors"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mt-6 inline-flex items-center rounded-lg border border-malibu-blue/40 bg-malibu-blue/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-malibu-blue transition-colors hover:bg-malibu-blue/20 hover:text-white"
+          <div
+            class="mx-auto mt-6 grid max-w-5xl grid-cols-2 justify-items-center gap-x-6 gap-y-2 text-base sm:grid-cols-3 lg:grid-cols-4 sm:text-lg"
           >
-            ${translateText("credits.github_contributors")}
-          </a>
+            ${githubContributors.map(
+              (contributor) => html`
+                <a
+                  data-github-contributor
+                  href=${contributor.profileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-white/80 underline decoration-white/25 underline-offset-4 transition-colors hover:text-malibu-blue hover:decoration-malibu-blue"
+                >
+                  ${contributor.login}
+                </a>
+              `,
+            )}
+          </div>
         </section>
 
         <section
