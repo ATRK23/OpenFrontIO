@@ -50,5 +50,8 @@ jobs:
           git push --force "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:refs/heads/$branch"
 
           if gh pr list --head "$branch" --state open --json number --jq 'length == 0' | grep -qx true; then
-            gh pr create --base main --head "$branch" --title "Update credits GitHub contributors" --body "Automated update from GitHub's repository contributors API."
+            if ! gh pr create --base main --head "$branch" --title "Update credits GitHub contributors" --body "Automated update from GitHub's repository contributors API."; then
+              echo "::warning title=Pull request not created::The branch was pushed, but GitHub Actions is not permitted to create pull requests for this repository. Enable this in Settings > Actions > General > Workflow permissions."
+              echo "Open a pull request manually: https://github.com/${GITHUB_REPOSITORY}/compare/main...${branch}?expand=1"
+            fi
           fi
