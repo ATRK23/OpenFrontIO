@@ -234,7 +234,9 @@ export class OModal extends LitElement {
     // not `in-[.page-open]:` as in MainLayout: this renders in a shadow root,
     // which body.page-open can't reach, and an inline modal only shows while
     // its page is open anyway.
-    const sectionClass = `relative flex-1 min-h-0 flex flex-col text-white bg-black/70 backdrop-blur-xl overflow-hidden ${
+    const sectionClass = `relative flex-1 min-h-0 flex flex-col text-white ${
+      this.fullScreen ? "bg-slate-950/55" : "bg-black/70"
+    } backdrop-blur-xl overflow-hidden ${
       this.fullScreen
         ? "rounded-none border-0"
         : "lg:rounded-2xl lg:border border-white/10"
