@@ -16,6 +16,8 @@ export interface ModalConfig {
   hideHeader?: boolean;
   hideCloseButton?: boolean;
   alwaysMaximized?: boolean;
+  /** Fill the viewport instead of using the standard centred dialog frame. */
+  fullScreen?: boolean;
   maxWidth?: string;
   hideTabs?: boolean;
   showScrollToTop?: boolean;
@@ -148,6 +150,7 @@ export abstract class BaseModal extends LitElement {
         ?hideHeader=${cfg.hideHeader ?? true}
         ?hideCloseButton=${cfg.hideCloseButton ?? true}
         ?alwaysMaximized=${cfg.alwaysMaximized ?? false}
+        ?fullScreen=${cfg.fullScreen ?? false}
         maxWidth=${cfg.maxWidth ?? ""}
         ?showScrollToTop=${cfg.showScrollToTop ?? false}
         .tabs=${cfg.hideTabs ? [] : tabs}
