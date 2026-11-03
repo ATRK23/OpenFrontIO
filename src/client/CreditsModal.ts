@@ -190,7 +190,7 @@ export class CreditsModal extends BaseModal {
             </p>
           </div>
           <div
-            class="credits-legal prose prose-invert mx-auto mt-10 max-w-none text-white/75 [&_a]:text-malibu-blue [&_a:hover]:text-aquarius [&_h1]:hidden [&_h2]:mt-12 [&_h2]:mb-6 [&_h2]:border-b [&_h2]:border-white/10 [&_h2]:pb-3 [&_h2]:text-3xl [&_h2]:text-white [&_h3]:mt-8 [&_h3]:text-xl [&_h3]:text-white [&_p]:text-base [&_p]:leading-relaxed sm:[&_p]:text-lg"
+            class="credits-legal prose prose-invert mx-auto mt-10 max-w-none text-white/75 [&_a]:text-malibu-blue [&_a:hover]:text-aquarius [&_h1]:hidden [&_h2]:mt-12 [&_h2]:mb-6 [&_h2]:text-3xl [&_h2]:text-white [&_h3]:mt-8 [&_h3]:text-xl [&_h3]:text-white [&_p]:text-base [&_p]:leading-relaxed sm:[&_p]:text-lg"
           >
             ${renderMarkdown(creditsMarkdown)}
           </div>
