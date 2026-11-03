@@ -4,7 +4,12 @@ import creditsMarkdown from "../../CREDITS.md?raw";
 import { BaseModal } from "./components/BaseModal";
 import { modalHeader } from "./components/ui/ModalHeader";
 import { renderMarkdown } from "./Markdown";
+import { prefersReducedMotion } from "./utilities/ReducedMotion";
 import { textDirection, translateText } from "./Utils";
+
+const EXIT_ANIMATION_MS = 180;
+const AUTO_SCROLL_DELAY_MS = 5_000;
+const AUTO_SCROLL_PIXELS_PER_SECOND = 18;
 
 /**
  * The legal attribution text remains in CREDITS.md, its existing source of
@@ -14,6 +19,11 @@ import { textDirection, translateText } from "./Utils";
 @customElement("credits-modal")
 export class CreditsModal extends BaseModal {
   protected routerName = "credits";
+
+  private closing = false;
+  private autoScrollTimer: ReturnType<typeof setTimeout> | undefined;
+  private autoScrollFrame: number | undefined;
+  private lastScrollFrameAt: number | undefined;
 
   protected modalConfig() {
     return {
@@ -25,9 +35,77 @@ export class CreditsModal extends BaseModal {
 
   protected renderBody() {
     return html`
+      <style>
+        @keyframes credits-overlay-in {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        @keyframes credits-overlay-out {
+          from {
+            opacity: 1;
+          }
+          to {
+            opacity: 0;
+          }
+        }
+        @keyframes credits-copy-in {
+          from {
+            opacity: 0;
+            transform: translateY(1.25rem);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        credits-modal.credits-entering > o-modal {
+          animation: credits-overlay-in 250ms ease-out both;
+        }
+        credits-modal.credits-leaving > o-modal {
+          animation: credits-overlay-out ${EXIT_ANIMATION_MS}ms ease-in both;
+        }
+        credits-modal.credits-entering [data-credits-opening],
+        credits-modal.credits-entering [data-credits-section],
+        credits-modal.credits-entering [data-credits-closing] {
+          opacity: 0;
+          animation: credits-copy-in 600ms ease-out both;
+        }
+        credits-modal.credits-entering [data-credits-opening] {
+          animation-delay: 240ms;
+        }
+        credits-modal.credits-entering [data-credits-section="team"] {
+          animation-delay: 800ms;
+        }
+        credits-modal.credits-entering [data-credits-section="contributors"] {
+          animation-delay: 1.5s;
+        }
+        credits-modal.credits-entering [data-credits-section="legal"] {
+          animation-delay: 2.2s;
+        }
+        credits-modal.credits-entering [data-credits-closing] {
+          animation-delay: 2.9s;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          credits-modal.credits-entering > o-modal,
+          credits-modal.credits-leaving > o-modal,
+          credits-modal.credits-entering [data-credits-opening],
+          credits-modal.credits-entering [data-credits-section],
+          credits-modal.credits-entering [data-credits-closing] {
+            animation: none;
+          }
+        }
+      </style>
       <div
         dir=${textDirection()}
         class="mx-auto w-full max-w-6xl px-5 py-10 text-center sm:px-10 sm:py-16 lg:px-16"
+        @wheel=${this.stopAutoScroll}
+        @touchstart=${this.stopAutoScroll}
+        @pointerdown=${this.stopAutoScroll}
+        @keydown=${this.stopAutoScroll}
       >
         <p
           data-credits-opening
@@ -122,4 +200,79 @@ export class CreditsModal extends BaseModal {
       ariaLabel: translateText("common.back"),
     });
   }
+
+  protected onOpen(): void {
+    this.stopAutoScroll();
+    this.closing = false;
+    this.classList.remove("credits-leaving", "credits-entering");
+    if (prefersReducedMotion()) return;
+    requestAnimationFrame(() => {
+      if (!this.isOpen()) return;
+      this.classList.add("credits-entering");
+      this.autoScrollTimer = setTimeout(
+        () => this.startAutoScroll(),
+        AUTO_SCROLL_DELAY_MS,
+      );
+    });
+  }
+
+  protected onClose(): void {
+    this.stopAutoScroll();
+    this.classList.remove("credits-entering", "credits-leaving");
+    this.closing = false;
+  }
+
+  public close(args?: Record<string, unknown>): void {
+    if (this.closing || !this.isOpen()) return;
+    this.stopAutoScroll();
+    if (prefersReducedMotion()) {
+      super.close(args);
+      return;
+    }
+    this.closing = true;
+    this.classList.remove("credits-entering");
+    this.classList.add("credits-leaving");
+    setTimeout(() => super.close(args), EXIT_ANIMATION_MS);
+  }
+
+  disconnectedCallback(): void {
+    this.stopAutoScroll();
+    super.disconnectedCallback();
+  }
+
+  private startAutoScroll(): void {
+    if (!this.isOpen() || this.closing || prefersReducedMotion()) return;
+    this.lastScrollFrameAt = undefined;
+    this.autoScrollFrame = requestAnimationFrame(this.autoScroll);
+  }
+
+  private autoScroll = (now: number): void => {
+    const modal = this.modalEl;
+    if (modal === undefined || !this.isOpen() || this.closing) return;
+    if (this.lastScrollFrameAt === undefined) {
+      this.lastScrollFrameAt = now;
+      this.autoScrollFrame = requestAnimationFrame(this.autoScroll);
+      return;
+    }
+    const previous = modal.getScrollTop();
+    const elapsed = now - this.lastScrollFrameAt;
+    this.lastScrollFrameAt = now;
+    modal.setScrollTop(
+      previous + (elapsed / 1_000) * AUTO_SCROLL_PIXELS_PER_SECOND,
+    );
+    if (modal.getScrollTop() <= previous) return;
+    this.autoScrollFrame = requestAnimationFrame(this.autoScroll);
+  };
+
+  private stopAutoScroll = (): void => {
+    if (this.autoScrollTimer !== undefined) {
+      clearTimeout(this.autoScrollTimer);
+      this.autoScrollTimer = undefined;
+    }
+    if (this.autoScrollFrame !== undefined) {
+      cancelAnimationFrame(this.autoScrollFrame);
+      this.autoScrollFrame = undefined;
+    }
+    this.lastScrollFrameAt = undefined;
+  };
 }
