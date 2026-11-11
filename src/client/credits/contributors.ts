@@ -1,7 +1,7 @@
 import { excludedContributors } from "./exclusions";
 
-/** Maintainer-selected display order for the generated contributor list. */
-export const contributorSort: "alphabetical" | "known-lines" = "known-lines";
+/** Choose "alphabetical" or "known-lines" (most known lines first). */
+export const contributorSort: "alphabetical" | "known-lines" = "alphabetical";
 
 export interface Contributor {
   login: string;

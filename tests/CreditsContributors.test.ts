@@ -22,6 +22,11 @@ describe("credits contributor data", () => {
     expect(
       sortContributors(contributors, "alphabetical").map((p) => p.login),
     ).toEqual(["Alice", "Bob", "Zoe"]);
+    expect(sortContributors(contributors).map((p) => p.login)).toEqual([
+      "Alice",
+      "Bob",
+      "Zoe",
+    ]);
     expect(
       sortContributors(contributors, "known-lines").map((p) => p.login),
     ).toEqual(["Bob", "Alice", "Zoe"]);

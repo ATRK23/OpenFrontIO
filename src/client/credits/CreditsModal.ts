@@ -1,8 +1,11 @@
 import { html, render } from "lit";
+import contributorData from "resources/credits/contributors.json";
 import creditsMarkdown from "../../../CREDITS.md?raw";
 import { renderMarkdown } from "../Markdown";
+import "../components/baseComponents/Button";
 import { prefersReducedMotion } from "../utilities/ReducedMotion";
 import { translateText } from "../Utils";
+import { sortContributors } from "./contributors";
 import { animateCredits } from "./CreditsAnimation";
 import { featuredPeople } from "./people";
 import { creditsPresentation } from "./presentation";
@@ -38,13 +41,12 @@ export function openCredits(): void {
         <h1 id="credits-title" class="text-2xl font-bold">
           ${translateText("game_starting_modal.credits")}
         </h1>
-        <button
-          type="button"
-          class="rounded px-4 py-2 bg-white/10 hover:bg-white/20"
+        <o-button
+          translationKey="common.close"
+          variant="secondary"
+          size="sm"
           @click=${closeCredits}
-        >
-          ${translateText("common.close")}
-        </button>
+        ></o-button>
       </header>
       <main
         tabindex="0"
@@ -58,7 +60,7 @@ export function openCredits(): void {
           ${translateText("credits.thanks_for_playing")}
         </div>
         <section data-credits-section class="mb-12">
-          <h2 class="mb-6 text-2xl sm:text-3xl font-semibold">
+          <h2 class="mb-6 text-2xl sm:text-3xl font-semibold text-blue-200">
             ${translateText("credits.team")}
           </h2>
           ${featuredPeople.map(
@@ -67,7 +69,7 @@ export function openCredits(): void {
                 ${
                   person.url
                     ? html`<a
-                        class="text-blue-300 hover:underline"
+                        class="text-inherit hover:underline"
                         href=${person.url}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -83,26 +85,35 @@ export function openCredits(): void {
           ${featuredPeople.length === 0 ? html`<p class="text-white/60">${translateText("credits.team_pending")}</p>` : null}
         </section>
         <section data-credits-section class="mb-12">
-          <h2 class="mb-4 text-2xl sm:text-3xl font-semibold">
+          <h2 class="mb-4 text-2xl sm:text-3xl font-semibold text-blue-200">
             ${translateText("credits.contributors")}
           </h2>
-          <a
-            class="text-blue-300 hover:underline"
-            href="https://github.com/openfrontio/OpenFrontIO/graphs/contributors"
-            target="_blank"
-            rel="noopener noreferrer"
-            >${translateText("credits.view_contributors")}</a
+          <ul
+            class="mx-auto grid max-w-5xl grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-3"
           >
+            ${sortContributors(contributorData.contributors).map(
+              (person) =>
+                html`<li class="min-w-0 break-words">
+                  <a
+                    class="text-inherit hover:underline"
+                    href=${`https://github.com/${encodeURIComponent(person.login)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >${person.login}</a
+                  >
+                </li>`,
+            )}
+          </ul>
         </section>
         <section data-credits-section>
-          <h2 class="mb-4 text-2xl sm:text-3xl font-semibold">
+          <h2 class="mb-4 text-2xl sm:text-3xl font-semibold text-blue-200">
             ${translateText("credits.licenses")}
           </h2>
           <p class="mb-3">
             ${translateText("game_starting_modal.code_license")}
           </p>
           <div
-            class="mx-auto max-w-6xl columns-1 gap-12 break-words text-center leading-relaxed md:columns-2 [&_a]:text-blue-300 [&_a]:underline [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-semibold [&_h3]:mt-6 [&_h3]:text-lg [&_h3]:font-semibold [&_p]:my-3 [&_ul]:list-inside [&_ul]:list-disc"
+            class="mx-auto max-w-6xl columns-1 gap-12 break-words text-center leading-relaxed md:columns-2 [&_a]:text-inherit [&_a]:underline [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-blue-200 [&_h3]:mt-6 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:text-blue-100 [&_p]:my-3 [&_ul]:list-inside [&_ul]:list-disc"
           >
             ${creditsMarkdown
               .replace(/^# Credits\s*\r?\n/, "")
