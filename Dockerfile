@@ -22,6 +22,7 @@ COPY tsconfig.json tsconfig.base.json ./
 COPY vite.config.ts ./
 COPY index.html ./
 COPY CREDITS.md ./
+COPY TRANSLATORS.md ./
 COPY client-api.json ./
 COPY resources ./resources
 COPY proprietary ./proprietary

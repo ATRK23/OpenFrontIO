@@ -1,6 +1,7 @@
 import { html, render } from "lit";
 import contributorData from "resources/credits/contributors.json";
 import creditsMarkdown from "../../../CREDITS.md?raw";
+import translatorsMarkdown from "../../../TRANSLATORS.md?raw";
 import { renderMarkdown } from "../Markdown";
 import "../components/baseComponents/Button";
 import { prefersReducedMotion } from "../utilities/ReducedMotion";
@@ -9,6 +10,7 @@ import { sortContributors } from "./contributors";
 import { animateCredits } from "./CreditsAnimation";
 import { featuredPeople } from "./people";
 import { creditsPresentation } from "./presentation";
+import { nativeTranslatorLanguage } from "./translatorLanguages";
 
 /** Opens the credits over the homepage without loading them on startup. */
 export function openCredits(): void {
@@ -77,7 +79,8 @@ export function openCredits(): void {
                       >`
                     : person.name
                 }
-                <span class="mt-2 block text-xl font-normal text-white/60 sm:text-2xl"
+                <span
+                  class="mt-2 block text-xl font-normal text-white/60 sm:text-2xl"
                   >${translateText(person.roleKey)}</span
                 >
               </p>`,
@@ -104,6 +107,33 @@ export function openCredits(): void {
                 </li>`,
             )}
           </ul>
+        </section>
+        <section data-credits-section class="mb-12">
+          <h2 class="mb-4 text-2xl sm:text-3xl font-semibold text-blue-200">
+            ${translateText("credits.translators")}
+          </h2>
+          <div
+            class="mx-auto grid max-w-5xl grid-cols-1 gap-x-8 gap-y-6 break-words sm:grid-cols-2 lg:grid-cols-3 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-blue-100 [&_p]:mt-2"
+          >
+            ${translatorsMarkdown
+              .split(/(?=^## )/m)
+              .slice(1)
+              .map((section) => {
+                const localized = section.replace(
+                  /^## (.+)$/m,
+                  (_line, name: string) =>
+                    `## ${nativeTranslatorLanguage(name.trim())}`,
+                );
+                return html`<div dir="auto">${renderMarkdown(localized)}</div>`;
+              })}
+          </div>
+          <a
+            class="mt-8 inline-block text-inherit hover:underline"
+            href="https://crowdin.com/project/openfront-mls"
+            target="_blank"
+            rel="noopener noreferrer"
+            >${translateText("credits.view_translation_project")}</a
+          >
         </section>
         <section data-credits-section>
           <h2 class="mb-4 text-2xl sm:text-3xl font-semibold text-blue-200">

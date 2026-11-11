@@ -1103,6 +1103,8 @@
     },
     "team_pending": "Names and roles to be confirmed",
     "contributors": "Contributors",
+    "translators": "Translators and proofreaders",
+    "view_translation_project": "OpenFront translation project on Crowdin",
     "view_contributors": "View contributors on GitHub",
     "licenses": "Licenses and attributions",
     "thanks_for_playing": "Thank you for playing"

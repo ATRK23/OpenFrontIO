@@ -1,7 +1,7 @@
-import { afterEach, expect, test, vi } from "vitest";
 import contributorData from "resources/credits/contributors.json";
-import { openCredits } from "../../src/client/credits/CreditsModal";
+import { afterEach, expect, test, vi } from "vitest";
 import { sortContributors } from "../../src/client/credits/contributors";
+import { openCredits } from "../../src/client/credits/CreditsModal";
 
 vi.mock("../../src/client/utilities/ReducedMotion", () => ({
   prefersReducedMotion: () => true,
@@ -26,7 +26,9 @@ test("shows contributor profile links and excludes configured bots", () => {
   );
   expect(links.length).toBeGreaterThan(0);
   expect(links.map((link) => link.textContent?.trim())).toEqual(
-    sortContributors(contributorData.contributors).map((person) => person.login),
+    sortContributors(contributorData.contributors).map(
+      (person) => person.login,
+    ),
   );
   expect(
     links.some((link) => link.textContent?.trim() === "dependabot[bot]"),
@@ -37,4 +39,10 @@ test("shows contributor profile links and excludes configured bots", () => {
     );
     expect(link.rel).toContain("noopener");
   }
+  const translations = Array.from(
+    document.querySelectorAll("#credits-dialog section"),
+  ).find((section) => section.textContent?.includes("Game_Sushi"));
+  expect(translations?.textContent).toContain("Français");
+  expect(translations?.textContent).toContain("Schweizerdeutsch");
+  expect(translations?.textContent).toContain("cldprv, gx21, r3ms, Eiwalis");
 });
