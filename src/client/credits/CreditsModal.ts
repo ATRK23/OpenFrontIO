@@ -80,14 +80,16 @@ export function openCredits(): void {
         autofocus
         class="min-h-0 flex-1 overflow-y-auto px-4 sm:px-6 text-center"
       >
-        <div
-          data-credits-welcome
-          class="min-h-full flex items-center justify-center text-2xl sm:text-3xl font-bold"
-        >
-          ${translateText("credits.thanks_for_playing")}
+        <div class="min-h-full flex items-center justify-center">
+          <img
+            data-credits-logo
+            src=${assetUrl("images/OpenFrontLogo.svg")}
+            alt="OpenFront"
+            class="w-[80%] max-w-2xl max-h-[50vh] object-contain"
+          />
         </div>
         <section data-credits-section class="mb-12">
-          <h2 class="mb-6 text-2xl sm:text-3xl font-semibold text-blue-200">
+          <h2 class="mb-6 text-3xl sm:text-4xl font-bold text-blue-200">
             ${translateText("credits.team")}
           </h2>
           ${featuredPeople.map(
@@ -113,11 +115,11 @@ export function openCredits(): void {
           ${featuredPeople.length === 0 ? html`<p class="text-white/60">${translateText("credits.team_pending")}</p>` : null}
         </section>
         <section data-credits-section class="mb-12">
-          <h2 class="mb-4 text-2xl sm:text-3xl font-semibold text-blue-200">
+          <h2 class="mb-6 text-3xl sm:text-4xl font-bold text-blue-200">
             ${translateText("credits.contributors")}
           </h2>
           <ul
-            class="mx-auto grid max-w-5xl grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-3"
+            class="mx-auto grid max-w-5xl grid-cols-2 gap-x-4 gap-y-3 text-lg sm:grid-cols-3 sm:text-xl"
           >
             ${sortContributors(contributorData.contributors).map(
               (person) =>
@@ -132,20 +134,27 @@ export function openCredits(): void {
                 </li>`,
             )}
           </ul>
+          <a
+            class="mt-8 inline-block text-lg text-inherit underline hover:text-blue-200 sm:text-xl"
+            href="https://github.com/openfrontio/OpenFrontIO/blob/main/CONTRIBUTING.md"
+            target="_blank"
+            rel="noopener noreferrer"
+            >${translateText("credits.contribute_code")}</a
+          >
         </section>
         <section data-credits-section class="mb-12">
-          <h2 class="mb-4 text-2xl sm:text-3xl font-semibold text-blue-200">
+          <h2 class="mb-6 text-3xl sm:text-4xl font-bold text-blue-200">
             ${translateText("credits.translators")}
           </h2>
           <div
-            class="mx-auto grid max-w-5xl grid-cols-1 gap-x-8 gap-y-6 break-words sm:grid-cols-2 lg:grid-cols-3 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-blue-100 [&_p]:mt-2"
+            class="mx-auto grid max-w-5xl grid-cols-1 gap-x-8 gap-y-6 break-words text-lg sm:grid-cols-2 sm:text-xl lg:grid-cols-3 [&_p]:mt-2"
           >
             ${translatorSections.map(
               (section) =>
                 html`<div dir="auto">
                   <h2
                     data-translator-language
-                    class="text-xl font-semibold text-blue-100"
+                    class="text-2xl font-semibold text-blue-100"
                   >
                     ${
                       section.icon
@@ -163,41 +172,46 @@ export function openCredits(): void {
             )}
           </div>
           <a
-            class="mt-8 inline-block text-inherit hover:underline"
+            class="mt-8 inline-block text-lg text-inherit underline hover:text-blue-200 sm:text-xl"
             href="https://crowdin.com/project/openfront-mls"
             target="_blank"
             rel="noopener noreferrer"
-            >${translateText("credits.view_translation_project")}</a
+            >${translateText("credits.contribute_translation")}</a
           >
         </section>
         <section data-credits-section>
-          <h2 class="mb-4 text-2xl sm:text-3xl font-semibold text-blue-200">
+          <h2 class="mb-6 text-3xl sm:text-4xl font-bold text-blue-200">
             ${translateText("credits.licenses")}
           </h2>
-          <p class="mb-3">
-            ${translateText("game_starting_modal.code_license")}
-          </p>
           <div
-            class="mx-auto max-w-6xl columns-1 gap-12 break-words text-center leading-relaxed md:columns-2 [&_a]:text-inherit [&_a]:underline [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-blue-200 [&_h3]:mt-6 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:text-blue-100 [&_p]:my-3 [&_ul]:list-inside [&_ul]:list-disc"
+            class="mx-auto max-w-6xl break-words text-center text-lg leading-relaxed sm:text-xl [&_a]:text-inherit [&_a]:underline [&_h2]:mt-10 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-blue-200 [&_h3]:mt-6 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-blue-100 [&_p]:my-3 [&_ul]:list-inside [&_ul]:list-disc"
           >
             ${creditsMarkdown
               .replace(/^# Credits\s*\r?\n/, "")
-              .split(/(?=^#{2,3} )/m)
+              .split(/(?=^## )/m)
               .filter((section) => section.trim())
-              .map(
-                (section) =>
-                  html`<div class="break-inside-avoid">
-                    ${renderMarkdown(section)}
-                  </div>`,
-              )}
+              .map((section) => {
+                if (!/^## Map Data\s*$/m.test(section)) {
+                  return html`<div>${renderMarkdown(section)}</div>`;
+                }
+                const [heading, ...maps] = section.split(/(?=^### )/m);
+                return html`<div>${renderMarkdown(heading)}</div>
+                  <div
+                    data-map-attributions
+                    class="columns-1 gap-12 md:columns-2"
+                  >
+                    ${maps.map((map) => html`<div class="break-inside-avoid">${renderMarkdown(map)}</div>`)}
+                  </div>`;
+              })}
           </div>
         </section>
         <div
-          class="min-h-full flex items-center justify-center text-2xl sm:text-3xl font-bold"
+          class="min-h-full flex items-center justify-center text-3xl sm:text-4xl font-bold"
         >
-          <p data-credits-farewell>
-            ${translateText("credits.thanks_for_playing")}
-          </p>
+          <div data-credits-farewell>
+            <p>${translateText("credits.thanks_for_playing")}</p>
+            <span class="mt-4 block" aria-hidden="true">❤️</span>
+          </div>
         </div>
       </main>`,
     dialog,

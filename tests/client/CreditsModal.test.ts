@@ -58,4 +58,24 @@ test("shows contributor profile links and excludes configured bots", () => {
   expect(
     Array.from(icons).every((icon) => icon.getAttribute("alt") === ""),
   ).toBe(true);
+  expect(
+    document.querySelector("[data-credits-logo]")?.getAttribute("src"),
+  ).toContain("OpenFrontLogo.svg");
+  expect(
+    document.querySelector("[data-credits-farewell]")?.textContent,
+  ).toContain("❤️");
+  const maps = document.querySelector("[data-map-attributions]");
+  expect(maps?.textContent).toContain("OpenStreetMap");
+  expect(maps?.textContent).not.toContain("The Noun Project");
+  expect(maps?.textContent).not.toContain("FFA Rating");
+  expect(
+    document.querySelector(
+      'a[href="https://github.com/openfrontio/OpenFrontIO/blob/main/CONTRIBUTING.md"]',
+    ),
+  ).not.toBeNull();
+  expect(
+    document.querySelector(
+      'a[href="https://crowdin.com/project/openfront-mls"]',
+    ),
+  ).not.toBeNull();
 });

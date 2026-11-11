@@ -22,20 +22,19 @@ export function animateCredits(
   let lastTime: number | undefined;
   let motionStart: number | undefined;
   let position = container.scrollTop;
-  const welcomeStartMs = config.modalFadeMs + config.messageDelayMs;
+  const logoStartMs = config.modalFadeMs + config.messageDelayMs;
   const sectionStartMs =
-    welcomeStartMs + config.fadeDurationMs + config.sectionDelayMs;
+    logoStartMs + config.fadeDurationMs + config.sectionDelayMs;
   let resumeAt = performance.now() + sectionStartMs + config.fadeDurationMs;
 
   container
-    .querySelector<HTMLElement>("[data-credits-welcome]")
+    .querySelector<HTMLElement>("[data-credits-logo]")
     ?.animate([{ opacity: 0 }, { opacity: 1 }], {
       duration: config.fadeDurationMs,
-      delay: welcomeStartMs,
+      delay: logoStartMs,
       easing: "ease",
       fill: "both",
     });
-
   sections.forEach((section, index) => {
     section.style.opacity = "0";
     section.style.transition = `opacity ${config.fadeDurationMs}ms ease`;

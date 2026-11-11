@@ -1097,15 +1097,17 @@
     "win_threshold": "Win threshold (%)"
   },
   "credits": {
-    "team": "Creators and team",
+    "team": "Creators and OpenFront™ team",
     "roles": {
       "maintainer": "Maintainer"
     },
     "team_pending": "Names and roles to be confirmed",
-    "contributors": "Contributors",
+    "contributors": "Code & GitHub Contributors",
     "translators": "Translators and proofreaders",
     "view_translation_project": "OpenFront translation project on Crowdin",
     "view_contributors": "View contributors on GitHub",
+    "contribute_code": "Want to contribute to OpenFront? Visit the contribution guide.",
+    "contribute_translation": "Want to help translate OpenFront? Join the translation project.",
     "licenses": "Licenses and attributions",
     "thanks_for_playing": "Thank you for playing"
   },
