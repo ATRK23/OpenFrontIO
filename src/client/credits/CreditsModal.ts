@@ -102,9 +102,18 @@ export function openCredits(): void {
             ${translateText("game_starting_modal.code_license")}
           </p>
           <div
-            class="mx-auto max-w-3xl text-left leading-relaxed [&_a]:text-blue-300 [&_a]:underline [&_h1]:text-2xl [&_h1]:font-bold [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-semibold [&_h3]:mt-6 [&_h3]:text-lg [&_h3]:font-semibold [&_p]:my-3 [&_ul]:list-disc [&_ul]:pl-6"
+            class="mx-auto max-w-6xl columns-1 gap-12 break-words text-center leading-relaxed md:columns-2 [&_a]:text-blue-300 [&_a]:underline [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-semibold [&_h3]:mt-6 [&_h3]:text-lg [&_h3]:font-semibold [&_p]:my-3 [&_ul]:list-inside [&_ul]:list-disc"
           >
-            ${renderMarkdown(creditsMarkdown.replace(/^# Credits\s*\r?\n/, ""))}
+            ${creditsMarkdown
+              .replace(/^# Credits\s*\r?\n/, "")
+              .split(/(?=^#{2,3} )/m)
+              .filter((section) => section.trim())
+              .map(
+                (section) =>
+                  html`<div class="break-inside-avoid">
+                    ${renderMarkdown(section)}
+                  </div>`,
+              )}
           </div>
         </section>
         <div
