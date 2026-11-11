@@ -131,7 +131,15 @@ export class Footer extends LitElement {
               target="_blank"
               class="hover:text-white transition-colors"
             ></a>
-            <span data-i18n="main.copyright"></span>
+            <button
+              type="button"
+              data-i18n="main.copyright"
+              class="hover:text-white transition-colors"
+              @click=${async () => {
+                const { openCredits } = await import("../credits/CreditsModal");
+                openCredits();
+              }}
+            ></button>
             <a
               href="/privacy-policy.html"
               data-i18n="main.privacy_policy"
