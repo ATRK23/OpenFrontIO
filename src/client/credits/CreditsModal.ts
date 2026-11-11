@@ -85,7 +85,7 @@ export function openCredits(): void {
       <main
         tabindex="0"
         autofocus
-        class="min-h-0 flex-1 overflow-y-auto px-4 sm:px-6 text-center"
+        class="hide-scrollbar min-h-0 flex-1 overflow-y-auto px-4 sm:px-6 text-center"
       >
         <div class="min-h-full flex items-center justify-center">
           <img
