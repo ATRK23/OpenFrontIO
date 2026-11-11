@@ -1,5 +1,8 @@
 import { describe, expect, test } from "vitest";
-import { countKnownLines } from "../scripts/credits/generate.mjs";
+import {
+  countKnownLines,
+  mergePreviousTotals,
+} from "../scripts/credits/generate.mjs";
 import { sortContributors } from "../src/client/credits/contributors";
 
 describe("credits contributor data", () => {
@@ -47,5 +50,37 @@ describe("credits contributor data", () => {
     expect(
       sortContributors(contributors).map((person) => person.login),
     ).toEqual(["Alice"]);
+  });
+
+  test("keeps larger ancestor totals without adding them, including renamed accounts", () => {
+    const current = [
+      { login: "Alice", githubId: 1, knownLinesChanged: null },
+      { login: "Bob", githubId: 2, knownLinesChanged: 7 },
+      { login: "NewName", githubId: 3, knownLinesChanged: 12 },
+      { login: "Dana", githubId: 4, knownLinesChanged: null },
+    ];
+    const previous = [
+      { login: "alice", knownLinesChanged: 10 },
+      { login: "Bob", githubId: 2, knownLinesChanged: 9 },
+      { login: "OldName", githubId: 3, knownLinesChanged: 5 },
+      { login: "Dana", githubId: 99, knownLinesChanged: 20 },
+      { login: "Missing", githubId: 5, knownLinesChanged: 6 },
+    ];
+    const result = mergePreviousTotals(current, previous, true);
+    expect(result.map((p) => p.knownLinesChanged)).toEqual([
+      10,
+      9,
+      12,
+      null,
+      6,
+    ]);
+    expect(result.map((p) => p.login)).toEqual([
+      "Alice",
+      "Bob",
+      "NewName",
+      "Dana",
+      "Missing",
+    ]);
+    expect(mergePreviousTotals(current, previous, false)).toEqual(current);
   });
 });

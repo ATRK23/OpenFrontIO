@@ -1,5 +1,5 @@
 import { execFileSync } from "node:child_process";
-import { mkdir, rename, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
@@ -31,6 +31,55 @@ export function countKnownLines(log, users) {
     counts.set(login, (counts.get(login) ?? 0) + lines);
   }
   return counts;
+}
+
+// Both snapshots cover full histories: adding them would count commits twice.
+export function mergePreviousTotals(current, previous, isAncestor) {
+  if (!isAncestor || !Array.isArray(previous)) return current;
+  const valid = previous.filter(
+    (person) =>
+      typeof person?.login === "string" &&
+      (person.knownLinesChanged === null ||
+        (Number.isSafeInteger(person.knownLinesChanged) &&
+          person.knownLinesChanged >= 0)),
+  );
+  const byId = new Map(
+    valid
+      .filter((person) => Number.isSafeInteger(person.githubId))
+      .map((person) => [person.githubId, person]),
+  );
+  // The original checked-in snapshot predates account IDs.
+  const legacyByLogin = new Map(
+    valid
+      .filter((person) => person.githubId === undefined)
+      .map((person) => [person.login.toLowerCase(), person]),
+  );
+  const used = new Set();
+  const merged = current.map((person) => {
+    const old =
+      byId.get(person.githubId) ??
+      legacyByLogin.get(person.login.toLowerCase());
+    if (!old) return person;
+    used.add(old);
+    const oldTotal = old.knownLinesChanged;
+    return {
+      ...person,
+      knownLinesChanged:
+        oldTotal === null
+          ? person.knownLinesChanged
+          : Math.max(person.knownLinesChanged ?? 0, oldTotal),
+    };
+  });
+  const currentLogins = new Set(
+    current.map((person) => person.login.toLowerCase()),
+  );
+  // Keep known accounts when GitHub temporarily omits them; never retain a
+  // conflicting old login for a different current account.
+  for (const old of valid) {
+    if (!used.has(old) && !currentLogins.has(old.login.toLowerCase()))
+      merged.push(old);
+  }
+  return merged;
 }
 
 async function githubContributors() {
@@ -77,6 +126,7 @@ async function main() {
     throw new Error("A complete Git history is required");
   const commit = git(["rev-parse", "--verify", `${revision}^{commit}`]).trim();
   const users = await githubContributors();
+  if (users.length === 0) throw new Error("GitHub returned no contributors");
   const log = git([
     "log",
     "--no-merges",
@@ -84,14 +134,53 @@ async function main() {
     "--format=%x00%ae%x00",
     commit,
     "--",
+    ".",
+    ":(exclude)resources/credits/contributors.json",
   ]);
   const counts = countKnownLines(log, users);
-  const contributors = users.map(({ login }) => ({
+  let contributors = users.map(({ id, login }) => ({
+    githubId: id,
     login,
     url: `https://github.com/${encodeURIComponent(login)}`,
     knownLinesChanged: counts.get(login) ?? null,
   }));
   const output = path.resolve("resources/credits/contributors.json");
+  let previous;
+  try {
+    previous = JSON.parse(await readFile(output, "utf8"));
+  } catch (error) {
+    if (error.code !== "ENOENT") throw error;
+  }
+  let isAncestor = false;
+  if (
+    typeof previous?.commit === "string" &&
+    /^[0-9a-f]{40}$/.test(previous.commit)
+  ) {
+    try {
+      git(["merge-base", "--is-ancestor", previous.commit, commit], {
+        stdio: "ignore",
+      });
+      isAncestor = true;
+    } catch (error) {
+      if (error.status !== 1 && error.status !== 128) throw error;
+    }
+  }
+  contributors = mergePreviousTotals(
+    contributors,
+    previous?.contributors,
+    isAncestor,
+  );
+  contributors.sort((a, b) =>
+    a.login.toLowerCase().localeCompare(b.login.toLowerCase(), "en"),
+  );
+  // Do not open a PR just because HEAD changed while the data stayed the same.
+  if (
+    isAncestor &&
+    JSON.stringify(contributors) === JSON.stringify(previous?.contributors)
+  ) {
+    console.log("Contributor data is unchanged.");
+    return;
+  }
   await mkdir(path.dirname(output), { recursive: true });
   const temporary = `${output}.tmp`;
   await writeFile(

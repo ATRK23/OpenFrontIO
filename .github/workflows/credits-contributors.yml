@@ -1,0 +1,71 @@
+name: Update contributor credits
+
+on:
+  push:
+    branches: [main, credits-page]
+    paths-ignore:
+      - resources/credits/contributors.json
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: contributor-credits-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  update:
+    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/credits-page' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: Generate contributor data
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/credits/generate.mjs HEAD
+      - name: Create or update pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BASE_BRANCH: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          git add resources/credits/contributors.json
+          if git diff --cached --quiet; then
+            echo "Contributor data is unchanged."
+            exit 0
+          fi
+
+          # Do not publish an older calculation over a newer target branch.
+          git fetch origin "$BASE_BRANCH"
+          if [ "$(git rev-parse HEAD)" != "$(git rev-parse FETCH_HEAD)" ]; then
+            echo "The target branch advanced during generation; its newer push will generate an update."
+            exit 0
+          fi
+
+          branch="automation/update-contributor-credits-$BASE_BRANCH"
+          remote_sha="$(git ls-remote --heads origin "refs/heads/$branch" | cut -f1)"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -C "$branch"
+          git commit -m "Update contributor credits"
+          git push --force-with-lease="refs/heads/$branch:$remote_sha" origin "HEAD:refs/heads/$branch"
+
+          existing="$(gh pr list --base "$BASE_BRANCH" --head "$branch" --state open --json number --jq '.[0].number // empty')"
+          if [ -z "$existing" ]; then
+            cat > "$RUNNER_TEMP/credits-pr.md" <<'EOF'
+          Updates the generated contributor list and known line totals from the target branch.
+
+          Line totals are partial and do not measure contribution quality or impact. Please review
+          the changes and assign a milestone before merging.
+          EOF
+            gh pr create --base "$BASE_BRANCH" --head "$branch" --title "Update contributor credits" --body-file "$RUNNER_TEMP/credits-pr.md"
+          fi
