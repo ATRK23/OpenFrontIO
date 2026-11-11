@@ -14,7 +14,7 @@ export function openCredits(): void {
   const dialog = document.createElement("dialog");
   dialog.id = "credits-dialog";
   dialog.className =
-    "fixed inset-0 m-0 flex h-[100dvh] w-full max-w-none max-h-none flex-col bg-zinc-950 text-white p-0";
+    "fixed inset-0 m-0 flex h-[100dvh] w-full max-w-none max-h-none flex-col bg-zinc-950/95 text-white p-0";
   dialog.setAttribute("aria-labelledby", "credits-title");
   let closing = false;
   const closeCredits = () => {
@@ -58,7 +58,7 @@ export function openCredits(): void {
           ${translateText("credits.thanks_for_playing")}
         </div>
         <section data-credits-section class="mb-12">
-          <h2 class="mb-6 text-xl font-semibold">
+          <h2 class="mb-6 text-2xl sm:text-3xl font-semibold">
             ${translateText("credits.team")}
           </h2>
           ${featuredPeople.map(
@@ -83,7 +83,7 @@ export function openCredits(): void {
           ${featuredPeople.length === 0 ? html`<p class="text-white/60">${translateText("credits.team_pending")}</p>` : null}
         </section>
         <section data-credits-section class="mb-12">
-          <h2 class="mb-4 text-xl font-semibold">
+          <h2 class="mb-4 text-2xl sm:text-3xl font-semibold">
             ${translateText("credits.contributors")}
           </h2>
           <a
@@ -95,7 +95,7 @@ export function openCredits(): void {
           >
         </section>
         <section data-credits-section>
-          <h2 class="mb-4 text-xl font-semibold">
+          <h2 class="mb-4 text-2xl sm:text-3xl font-semibold">
             ${translateText("credits.licenses")}
           </h2>
           <p class="mb-3">
@@ -104,7 +104,7 @@ export function openCredits(): void {
           <div
             class="mx-auto max-w-3xl text-left leading-relaxed [&_a]:text-blue-300 [&_a]:underline [&_h1]:text-2xl [&_h1]:font-bold [&_h2]:mt-8 [&_h2]:text-xl [&_h2]:font-semibold [&_h3]:mt-6 [&_h3]:text-lg [&_h3]:font-semibold [&_p]:my-3 [&_ul]:list-disc [&_ul]:pl-6"
           >
-            ${renderMarkdown(creditsMarkdown)}
+            ${renderMarkdown(creditsMarkdown.replace(/^# Credits\s*\r?\n/, ""))}
           </div>
         </section>
         <div
