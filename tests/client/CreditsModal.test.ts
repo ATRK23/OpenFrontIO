@@ -45,4 +45,17 @@ test("shows contributor profile links and excludes configured bots", () => {
   expect(translations?.textContent).toContain("Français");
   expect(translations?.textContent).toContain("Schweizerdeutsch");
   expect(translations?.textContent).toContain("cldprv, gx21, r3ms, Eiwalis");
+  const languageNames = Array.from(
+    translations?.querySelectorAll("[data-translator-language]") ?? [],
+    (heading) => heading.textContent!.trim(),
+  );
+  expect(languageNames).toEqual(
+    [...languageNames].sort(new Intl.Collator("en").compare),
+  );
+  const icons =
+    translations?.querySelectorAll("[data-translator-language] img") ?? [];
+  expect(icons).toHaveLength(languageNames.length);
+  expect(
+    Array.from(icons).every((icon) => icon.getAttribute("alt") === ""),
+  ).toBe(true);
 });

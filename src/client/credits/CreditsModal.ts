@@ -1,3 +1,4 @@
+import { assetUrl } from "@openfront/shared/AssetUrls";
 import { html, render } from "lit";
 import contributorData from "resources/credits/contributors.json";
 import creditsMarkdown from "../../../CREDITS.md?raw";
@@ -5,12 +6,12 @@ import translatorsMarkdown from "../../../TRANSLATORS.md?raw";
 import { renderMarkdown } from "../Markdown";
 import "../components/baseComponents/Button";
 import { prefersReducedMotion } from "../utilities/ReducedMotion";
-import { translateText } from "../Utils";
+import { getCurrentLanguage, translateText } from "../Utils";
 import { sortContributors } from "./contributors";
 import { animateCredits } from "./CreditsAnimation";
 import { featuredPeople } from "./people";
 import { creditsPresentation } from "./presentation";
-import { nativeTranslatorLanguage } from "./translatorLanguages";
+import { translatorLanguage } from "./translatorLanguages";
 
 /** Opens the credits over the homepage without loading them on startup. */
 export function openCredits(): void {
@@ -21,6 +22,18 @@ export function openCredits(): void {
   dialog.className =
     "fixed inset-0 m-0 flex h-[100dvh] w-full max-w-none max-h-none flex-col bg-zinc-950/95 text-white p-0";
   dialog.setAttribute("aria-labelledby", "credits-title");
+  const collator = new Intl.Collator(getCurrentLanguage());
+  const translatorSections = translatorsMarkdown
+    .split(/(?=^## )/m)
+    .slice(1)
+    .map((section) => {
+      const heading = section.match(/^## (.+)$/m)?.[1]?.trim() ?? "";
+      return {
+        ...translatorLanguage(heading),
+        body: section.replace(/^## .+\r?\n/, ""),
+      };
+    })
+    .sort((a, b) => collator.compare(a.name, b.name));
   let closing = false;
   const closeCredits = () => {
     if (closing) return;
@@ -115,17 +128,27 @@ export function openCredits(): void {
           <div
             class="mx-auto grid max-w-5xl grid-cols-1 gap-x-8 gap-y-6 break-words sm:grid-cols-2 lg:grid-cols-3 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-blue-100 [&_p]:mt-2"
           >
-            ${translatorsMarkdown
-              .split(/(?=^## )/m)
-              .slice(1)
-              .map((section) => {
-                const localized = section.replace(
-                  /^## (.+)$/m,
-                  (_line, name: string) =>
-                    `## ${nativeTranslatorLanguage(name.trim())}`,
-                );
-                return html`<div dir="auto">${renderMarkdown(localized)}</div>`;
-              })}
+            ${translatorSections.map(
+              (section) =>
+                html`<div dir="auto">
+                  <h2
+                    data-translator-language
+                    class="text-xl font-semibold text-blue-100"
+                  >
+                    ${
+                      section.icon
+                        ? html`<img
+                            class="inline-block h-5 w-7 object-contain align-middle"
+                            src=${assetUrl(`flags/${section.icon}.svg`)}
+                            alt=""
+                          />`
+                        : null
+                    }
+                    ${section.name}
+                  </h2>
+                  ${renderMarkdown(section.body)}
+                </div>`,
+            )}
           </div>
           <a
             class="mt-8 inline-block text-inherit hover:underline"
