@@ -248,6 +248,21 @@ export function openCredits(): void {
               })}
           </div>
         </section>
+        <figure
+          data-credits-section
+          class="mx-auto mt-24 w-full max-w-5xl sm:mt-32"
+        >
+          <img
+            src="/press/images/key-art/openfront_keyart_1200x675_branded.jpg"
+            alt="OpenFront"
+            draggable="false"
+            width="1200"
+            height="675"
+            loading="lazy"
+            decoding="async"
+            class="h-auto w-full rounded-xl"
+          />
+        </figure>
         <div
           class="mt-24 flex min-h-full items-center justify-center text-3xl font-bold sm:mt-32 sm:text-4xl"
         >

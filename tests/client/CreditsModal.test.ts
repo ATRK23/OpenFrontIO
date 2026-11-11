@@ -78,6 +78,10 @@ test("shows contributor profile links and excludes configured bots", () => {
     'img[src*="maps/brainrot/brainland"]',
   )!;
   const maps = document.querySelector("[data-map-attributions]")!;
+  const keyArt = document.querySelector<HTMLImageElement>(
+    'img[src="/press/images/key-art/openfront_keyart_1200x675_branded.jpg"]',
+  )!;
+  const farewell = document.querySelector("[data-credits-farewell]")!;
   expect(world.compareDocumentPosition(translations!)).toBe(
     Node.DOCUMENT_POSITION_FOLLOWING,
   );
@@ -86,6 +90,12 @@ test("shows contributor profile links and excludes configured bots", () => {
   );
   expect(
     brain.compareDocumentPosition(maps) & Node.DOCUMENT_POSITION_FOLLOWING,
+  ).toBeTruthy();
+  expect(
+    maps.compareDocumentPosition(keyArt) & Node.DOCUMENT_POSITION_FOLLOWING,
+  ).toBeTruthy();
+  expect(
+    keyArt.compareDocumentPosition(farewell) & Node.DOCUMENT_POSITION_FOLLOWING,
   ).toBeTruthy();
   expect(translations?.textContent).toContain("French");
   expect(translations?.textContent).toContain("German (Switzerland)");
