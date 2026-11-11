@@ -1096,6 +1096,12 @@
     "water_nukes": "Water nukes",
     "win_threshold": "Win threshold (%)"
   },
+  "credits": {
+    "team": "Creators and team",
+    "contributors": "Contributors",
+    "view_contributors": "View contributors on GitHub",
+    "licenses": "Licenses and attributions"
+  },
   "game_starting_modal": {
     "code_license": "Code licensed under AGPL-3.0 (no warranty)",
     "credits": "Credits",
