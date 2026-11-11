@@ -14,11 +14,14 @@ export function animateCredits(
   const farewell = container.querySelector<HTMLElement>(
     "[data-credits-farewell]",
   );
+  const heart = container.querySelector<HTMLElement>("[data-credits-heart]");
+  if (heart) heart.style.opacity = "0";
   const timers: number[] = [];
   const abort = new AbortController();
   let frame = 0;
   let endingTimer: number | undefined;
   let endingAnimation: Animation | undefined;
+  let heartAnimation: Animation | undefined;
   let lastTime: number | undefined;
   let motionStart: number | undefined;
   let position = container.scrollTop;
@@ -105,6 +108,14 @@ export function animateCredits(
           2
         : Infinity;
       if (distance <= 1) {
+        heartAnimation ??= heart?.animate(
+          [
+            { opacity: 0, transform: "scale(0.4)" },
+            { opacity: 1, transform: "scale(1.2)", offset: 0.7 },
+            { opacity: 1, transform: "scale(1)" },
+          ],
+          { duration: 600, easing: "ease-out", fill: "forwards" },
+        );
         endingTimer ??= window.setTimeout(() => {
           endingAnimation = farewell?.animate(
             [{ opacity: 1 }, { opacity: 0 }],
@@ -165,6 +176,8 @@ export function animateCredits(
     if (endingTimer !== undefined) clearTimeout(endingTimer);
     cancelAnimationFrame(frame);
     logoAnimation?.cancel();
+    heartAnimation?.cancel();
+    heart?.style.removeProperty("opacity");
     motionQuery?.removeEventListener?.("change", onMotionChange);
   };
   motionQuery?.addEventListener?.("change", onMotionChange);

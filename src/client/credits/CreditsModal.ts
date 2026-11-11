@@ -29,6 +29,10 @@ function translatorLanguage(englishName: string): {
 export function openCredits(): void {
   if (document.querySelector("#credits-dialog")) return;
 
+  let previouslyFocused = document.activeElement;
+  while (previouslyFocused?.shadowRoot?.activeElement) {
+    previouslyFocused = previouslyFocused.shadowRoot.activeElement;
+  }
   const dialog = document.createElement("dialog");
   dialog.id = "credits-dialog";
   dialog.className =
@@ -53,20 +57,26 @@ export function openCredits(): void {
     musicEnded = true;
     document.dispatchEvent(new Event("credits-closed"));
   };
-  const closeCredits = () => {
+  const closeCredits = (automatic = false) => {
     if (closing) return;
     closing = true;
     endCreditsMusic();
     stopAnimation();
-    if (prefersReducedMotion()) {
+    const closeDialog = () => {
       dialog.close();
+      if (automatic && previouslyFocused instanceof HTMLElement) {
+        previouslyFocused.blur();
+      }
+    };
+    if (prefersReducedMotion()) {
+      closeDialog();
       return;
     }
     dialog.animate([{ opacity: 1 }, { opacity: 0 }], {
       duration: creditsPresentation.modalFadeMs,
       easing: "ease",
       fill: "forwards",
-    }).onfinish = () => dialog.close();
+    }).onfinish = closeDialog;
   };
   render(
     html`<header
@@ -83,7 +93,7 @@ export function openCredits(): void {
           translationKey="common.close"
           variant="secondary"
           size="sm"
-          @click=${closeCredits}
+          @click=${() => closeCredits()}
         ></o-button>
       </header>
       <main
@@ -97,7 +107,7 @@ export function openCredits(): void {
             src=${assetUrl("images/OpenFrontLogo.svg")}
             alt="OpenFront"
             draggable="false"
-            class="w-[80%] max-w-2xl max-h-[50vh] object-contain"
+            class="w-[85%] max-w-3xl max-h-[50vh] object-contain"
           />
         </div>
         <section data-credits-section class="mb-24 sm:mb-32">
@@ -131,7 +141,7 @@ export function openCredits(): void {
             ${translateText("credits.contributors")}
           </h2>
           <ul
-            class="mx-auto grid max-w-5xl grid-cols-2 gap-x-4 gap-y-3 text-lg sm:grid-cols-3 sm:text-xl"
+            class="mx-auto grid max-w-5xl grid-cols-2 gap-x-4 gap-y-3 text-justify text-lg [text-align-last:center] sm:grid-cols-3 sm:text-xl"
           >
             ${sortContributors(contributorData.contributors).map(
               (person) =>
@@ -181,7 +191,7 @@ export function openCredits(): void {
                 html`<div dir="auto">
                   <h2
                     data-translator-language
-                    class="text-2xl font-semibold text-blue-100"
+                    class="text-center text-2xl font-semibold text-blue-100"
                   >
                     ${
                       section.icon
@@ -241,7 +251,7 @@ export function openCredits(): void {
                 return html`<div>${renderMarkdown(heading)}</div>
                   <div
                     data-map-attributions
-                    class="columns-1 gap-12 md:columns-2"
+                    class="columns-1 gap-12 md:columns-2 md:text-justify md:[text-align-last:center] [&_h3]:text-center"
                   >
                     ${maps.map((map) => html`<div class="break-inside-avoid">${renderMarkdown(map)}</div>`)}
                   </div>`;
@@ -264,11 +274,16 @@ export function openCredits(): void {
           />
         </figure>
         <div
-          class="mt-24 flex min-h-full items-center justify-center text-3xl font-bold sm:mt-32 sm:text-4xl"
+          class="mt-40 flex min-h-full items-center justify-center text-3xl font-bold sm:mt-48 sm:text-4xl"
         >
           <div data-credits-farewell>
             <p>${translateText("credits.thanks_for_playing")}</p>
-            <span class="mt-4 block" aria-hidden="true">❤️</span>
+            <span
+              data-credits-heart
+              class="mt-4 block text-5xl sm:text-6xl"
+              aria-hidden="true"
+              >❤️</span
+            >
           </div>
         </div>
       </main>`,
@@ -283,9 +298,8 @@ export function openCredits(): void {
       easing: "ease",
     });
   }
-  const stopAnimation = animateCredits(
-    dialog.querySelector("main")!,
-    closeCredits,
+  const stopAnimation = animateCredits(dialog.querySelector("main")!, () =>
+    closeCredits(true),
   );
   dialog.addEventListener("cancel", (event) => {
     event.preventDefault();
