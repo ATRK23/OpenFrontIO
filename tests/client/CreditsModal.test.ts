@@ -42,8 +42,8 @@ test("shows contributor profile links and excludes configured bots", () => {
   const translations = Array.from(
     document.querySelectorAll("#credits-dialog section"),
   ).find((section) => section.textContent?.includes("Game_Sushi"));
-  expect(translations?.textContent).toContain("Français");
-  expect(translations?.textContent).toContain("Schweizerdeutsch");
+  expect(translations?.textContent).toContain("French");
+  expect(translations?.textContent).toContain("German (Switzerland)");
   expect(translations?.textContent).toContain("cldprv, gx21, r3ms, Eiwalis");
   const languageNames = Array.from(
     translations?.querySelectorAll("[data-translator-language]") ?? [],

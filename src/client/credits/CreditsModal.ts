@@ -1,17 +1,29 @@
 import { assetUrl } from "@openfront/shared/AssetUrls";
 import { html, render } from "lit";
 import contributorData from "resources/credits/contributors.json";
+import languageMetadata from "resources/lang/metadata.json";
 import creditsMarkdown from "../../../CREDITS.md?raw";
 import translatorsMarkdown from "../../../TRANSLATORS.md?raw";
 import { renderMarkdown } from "../Markdown";
 import "../components/baseComponents/Button";
 import { prefersReducedMotion } from "../utilities/ReducedMotion";
-import { getCurrentLanguage, translateText } from "../Utils";
+import { translateText } from "../Utils";
 import { sortContributors } from "./contributors";
 import { animateCredits } from "./CreditsAnimation";
 import { featuredPeople } from "./people";
 import { creditsPresentation } from "./presentation";
-import { translatorLanguage } from "./translatorLanguages";
+
+/** Match the language picker's icon while keeping the English heading. */
+function translatorLanguage(englishName: string): {
+  name: string;
+  icon?: string;
+} {
+  const code = englishName === "German (Switzerland)" ? "de-CH" : undefined;
+  const language = languageMetadata.find((entry) =>
+    code ? entry.code === code : entry.en === englishName,
+  );
+  return { name: englishName, icon: language?.svg };
+}
 
 /** Opens the credits over the homepage without loading them on startup. */
 export function openCredits(): void {
@@ -22,7 +34,7 @@ export function openCredits(): void {
   dialog.className =
     "fixed inset-0 m-0 flex h-[100dvh] w-full max-w-none max-h-none flex-col bg-zinc-950/95 text-white p-0";
   dialog.setAttribute("aria-labelledby", "credits-title");
-  const collator = new Intl.Collator(getCurrentLanguage());
+  const collator = new Intl.Collator("en");
   const translatorSections = translatorsMarkdown
     .split(/(?=^## )/m)
     .slice(1)
