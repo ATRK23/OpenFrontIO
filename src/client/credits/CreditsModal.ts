@@ -70,8 +70,12 @@ export function openCredits(): void {
   };
   render(
     html`<header
-        class="flex shrink-0 items-center justify-between gap-3 p-4 sm:p-6 border-b border-white/10"
+        class="absolute inset-x-0 top-0 z-10 isolate flex items-center justify-between gap-3 p-4 sm:p-6"
       >
+        <div
+          aria-hidden="true"
+          class="pointer-events-none absolute inset-0 -z-10 bg-zinc-950/60 backdrop-blur-md [mask-image:linear-gradient(to_bottom,black_60%,transparent)] [-webkit-mask-image:linear-gradient(to_bottom,black_60%,transparent)]"
+        ></div>
         <h1 id="credits-title" class="text-2xl font-bold">
           ${translateText("game_starting_modal.credits")}
         </h1>
@@ -85,7 +89,7 @@ export function openCredits(): void {
       <main
         tabindex="0"
         autofocus
-        class="hide-scrollbar min-h-0 flex-1 overflow-y-auto px-4 sm:px-6 text-center"
+        class="hide-scrollbar min-h-0 flex-1 overflow-y-auto scroll-pt-24 px-4 sm:px-6 text-center"
       >
         <div class="min-h-full flex items-center justify-center">
           <img
