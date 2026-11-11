@@ -21,6 +21,7 @@ RUN --mount=type=cache,target=/root/.npm \
 COPY tsconfig.json tsconfig.base.json ./
 COPY vite.config.ts ./
 COPY index.html ./
+COPY CREDITS.md ./
 COPY client-api.json ./
 COPY resources ./resources
 COPY proprietary ./proprietary
