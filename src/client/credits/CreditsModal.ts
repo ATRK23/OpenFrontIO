@@ -65,7 +65,7 @@ export function openCredits(): void {
           </h2>
           ${featuredPeople.map(
             (person) =>
-              html`<p class="mb-4">
+              html`<p class="mb-6 text-3xl font-semibold sm:text-4xl">
                 ${
                   person.url
                     ? html`<a
@@ -77,7 +77,7 @@ export function openCredits(): void {
                       >`
                     : person.name
                 }
-                <span class="block text-white/60"
+                <span class="mt-2 block text-xl font-normal text-white/60 sm:text-2xl"
                   >${translateText(person.roleKey)}</span
                 >
               </p>`,

@@ -1098,6 +1098,9 @@
   },
   "credits": {
     "team": "Creators and team",
+    "roles": {
+      "maintainer": "Maintainer"
+    },
     "team_pending": "Names and roles to be confirmed",
     "contributors": "Contributors",
     "view_contributors": "View contributors on GitHub",

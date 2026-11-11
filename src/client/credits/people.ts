@@ -4,5 +4,11 @@ export interface FeaturedPerson {
   url?: string;
 }
 
-// Names and roles must be confirmed by the OpenFront maintainers.
-export const featuredPeople: readonly FeaturedPerson[] = [];
+// Additional names and roles must be confirmed by the OpenFront maintainers.
+export const featuredPeople: readonly FeaturedPerson[] = [
+  {
+    name: "Evan Pelle",
+    roleKey: "credits.roles.maintainer",
+    url: "https://github.com/evanpelle",
+  },
+];
