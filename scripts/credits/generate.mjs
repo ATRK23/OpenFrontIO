@@ -33,6 +33,92 @@ export function countKnownLines(log, users) {
   return counts;
 }
 
+// GitHub's totals overlap the local calculation. Take the maximum, not the sum.
+// Zero is not used as evidence: GitHub returns zeroes once the repository has
+// 10,000 commits, and zero-change records do not establish a useful total.
+export function mergeGithubStatistics(localCounts, users, statistics) {
+  const counts = new Map(localCounts);
+  const usersById = new Map(users.map((user) => [user.id, user.login]));
+  if (!Array.isArray(statistics)) return counts;
+  for (const entry of statistics) {
+    const login = usersById.get(entry?.author?.id);
+    if (!login || !Array.isArray(entry.weeks)) continue;
+    let total = 0;
+    let valid = true;
+    for (const week of entry.weeks) {
+      if (
+        !Number.isSafeInteger(week?.a) ||
+        week.a < 0 ||
+        !Number.isSafeInteger(week?.d) ||
+        week.d < 0
+      ) {
+        valid = false;
+        break;
+      }
+      total += week.a + week.d;
+      if (!Number.isSafeInteger(total)) {
+        valid = false;
+        break;
+      }
+    }
+    if (valid && total > 0)
+      counts.set(login, Math.max(counts.get(login) ?? 0, total));
+  }
+  return counts;
+}
+
+export async function githubStatistics(
+  commit,
+  fetchImpl = fetch,
+  wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms)),
+) {
+  const headers = {
+    Accept: "application/vnd.github+json",
+    "User-Agent": "OpenFront-credits-generator",
+  };
+  if (process.env.GITHUB_TOKEN)
+    headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+  const request = (endpoint) =>
+    fetchImpl(
+      `https://api.github.com/repos/${repo}${endpoint ? `/${endpoint}` : ""}`,
+      { headers },
+    );
+  try {
+    const repository = await request("");
+    if (!repository.ok || (await repository.json()).default_branch !== "main")
+      throw new Error("default branch unavailable or not main");
+    const getHead = async () => {
+      const response = await request("commits/main");
+      if (!response.ok)
+        throw new Error(`main lookup returned HTTP ${response.status}`);
+      return (await response.json()).sha;
+    };
+    if ((await getHead()) !== commit)
+      throw new Error("local revision is not the current official main");
+    let response;
+    for (let attempt = 0; attempt < 4; attempt++) {
+      response = await request("stats/contributors");
+      if (response.status !== 202) break;
+      if (attempt < 3) await wait(5000);
+    }
+    if (!response || response.status !== 200)
+      throw new Error(
+        `statistics unavailable (HTTP ${response?.status ?? "unknown"})`,
+      );
+    const statistics = await response.json();
+    if (!Array.isArray(statistics) || (await getHead()) !== commit)
+      throw new Error(
+        "statistics unavailable or main changed during generation",
+      );
+    return statistics;
+  } catch (error) {
+    console.warn(
+      `GitHub statistics unavailable; using local noreply totals: ${error.message}`,
+    );
+    return null;
+  }
+}
+
 // Both snapshots cover full histories: adding them would count commits twice.
 export function mergePreviousTotals(current, previous, isAncestor) {
   if (!isAncestor || !Array.isArray(previous)) return current;
@@ -137,7 +223,9 @@ async function main() {
     ".",
     ":(exclude)resources/credits/contributors.json",
   ]);
-  const counts = countKnownLines(log, users);
+  const localCounts = countKnownLines(log, users);
+  const statistics = await githubStatistics(commit);
+  const counts = mergeGithubStatistics(localCounts, users, statistics);
   let contributors = users.map(({ id, login }) => ({
     githubId: id,
     login,

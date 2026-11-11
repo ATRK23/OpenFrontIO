@@ -28,10 +28,12 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: 24
+      - name: Fetch official main for contributor statistics
+        run: git fetch --no-tags https://github.com/openfrontio/OpenFrontIO.git +refs/heads/main:refs/remotes/credits-source/main
       - name: Generate contributor data
         env:
           GITHUB_TOKEN: ${{ github.token }}
-        run: node scripts/credits/generate.mjs HEAD
+        run: node scripts/credits/generate.mjs refs/remotes/credits-source/main
       - name: Create or update pull request
         env:
           GH_TOKEN: ${{ github.token }}
@@ -62,7 +64,7 @@ jobs:
           existing="$(gh pr list --base "$BASE_BRANCH" --head "$branch" --state open --json number --jq '.[0].number // empty')"
           if [ -z "$existing" ]; then
             cat > "$RUNNER_TEMP/credits-pr.md" <<'EOF'
-          Updates the generated contributor list and known line totals from the target branch.
+          Updates the generated contributor list and known line totals from official main.
 
           Line totals are partial and do not measure contribution quality or impact. Please review
           the changes and assign a milestone before merging.
