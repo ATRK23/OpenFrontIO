@@ -1,12 +1,12 @@
 /** Credits timing, in milliseconds, and scroll speed in pixels per second. */
 export const creditsPresentation = {
-  sectionDelayMs: 700,
+  sectionDelayMs: 300,
   fadeDurationMs: 500,
   modalFadeMs: 400,
   messageDelayMs: 250,
-  endingPauseMs: 1000,
+  endingPauseMs: 2250,
   resumeDelayMs: 3000,
-  scrollPixelsPerSecond: 60,
+  scrollPixelsPerSecond: 80,
   accelerationMs: 1500,
-  slowdownDistancePx: 180,
+  slowdownDistancePx: 90,
 } as const;
