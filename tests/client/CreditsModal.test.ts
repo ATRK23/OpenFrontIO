@@ -71,6 +71,22 @@ test("shows contributor profile links and excludes configured bots", () => {
   const translations = Array.from(
     document.querySelectorAll("#credits-dialog section"),
   ).find((section) => section.textContent?.includes("Game_Sushi"));
+  const world = document.querySelector<HTMLImageElement>(
+    'img[src*="maps/world/w2kland"]',
+  )!;
+  const brain = document.querySelector<HTMLImageElement>(
+    'img[src*="maps/brainrot/brainland"]',
+  )!;
+  const maps = document.querySelector("[data-map-attributions]")!;
+  expect(world.compareDocumentPosition(translations!)).toBe(
+    Node.DOCUMENT_POSITION_FOLLOWING,
+  );
+  expect(translations!.compareDocumentPosition(brain)).toBe(
+    Node.DOCUMENT_POSITION_FOLLOWING,
+  );
+  expect(
+    brain.compareDocumentPosition(maps) & Node.DOCUMENT_POSITION_FOLLOWING,
+  ).toBeTruthy();
   expect(translations?.textContent).toContain("French");
   expect(translations?.textContent).toContain("German (Switzerland)");
   expect(translations?.textContent).toContain("cldprv, gx21, r3ms, Eiwalis");
@@ -93,7 +109,6 @@ test("shows contributor profile links and excludes configured bots", () => {
   expect(
     document.querySelector("[data-credits-farewell]")?.textContent,
   ).toContain("❤️");
-  const maps = document.querySelector("[data-map-attributions]");
   expect(maps?.textContent).toContain("OpenStreetMap");
   expect(maps?.textContent).not.toContain("The Noun Project");
   expect(maps?.textContent).not.toContain("FFA Rating");

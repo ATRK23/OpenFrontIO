@@ -153,6 +153,20 @@ export function openCredits(): void {
             >${translateText("credits.contribute_code")}</a
           >
         </section>
+        <figure
+          data-credits-section
+          class="mx-auto mb-24 w-full max-w-5xl sm:mb-32"
+        >
+          <img
+            src=${assetUrl("maps/world/w2kland.webp")}
+            alt=${translateText("map.world")}
+            width="2064"
+            height="1032"
+            loading="lazy"
+            decoding="async"
+            class="h-auto w-full rounded-xl"
+          />
+        </figure>
         <section data-credits-section class="mb-24 sm:mb-32">
           <h2 class="mb-6 text-3xl sm:text-4xl font-bold text-blue-200">
             ${translateText("credits.translators")}
@@ -190,6 +204,20 @@ export function openCredits(): void {
             >${translateText("credits.contribute_translation")}</a
           >
         </section>
+        <figure
+          data-credits-section
+          class="mx-auto mb-24 w-full max-w-2xl sm:mb-32"
+        >
+          <img
+            src=${assetUrl("maps/brainrot/brainland.webp")}
+            alt=${translateText("map.brainrot")}
+            width="2996"
+            height="2352"
+            loading="lazy"
+            decoding="async"
+            class="h-auto w-full rounded-xl"
+          />
+        </figure>
         <section data-credits-section>
           <h2 class="mb-6 text-3xl sm:text-4xl font-bold text-blue-200">
             ${translateText("credits.licenses")}
