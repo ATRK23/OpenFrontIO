@@ -10,7 +10,36 @@ vi.mock("../../src/client/utilities/ReducedMotion", () => ({
 afterEach(() => {
   document.body.innerHTML = "";
   Reflect.deleteProperty(HTMLDialogElement.prototype, "showModal");
+  Reflect.deleteProperty(HTMLDialogElement.prototype, "close");
   vi.restoreAllMocks();
+});
+
+test("announces opening and closing once for the music controller", () => {
+  Object.defineProperty(HTMLDialogElement.prototype, "showModal", {
+    configurable: true,
+    value: vi.fn(),
+  });
+  Object.defineProperty(HTMLDialogElement.prototype, "close", {
+    configurable: true,
+    value(this: HTMLDialogElement) {
+      this.dispatchEvent(new Event("close"));
+    },
+  });
+  const opened = vi.fn();
+  const closed = vi.fn();
+  document.addEventListener("credits-opened", opened);
+  document.addEventListener("credits-closed", closed);
+  try {
+    openCredits();
+    expect(opened).toHaveBeenCalledOnce();
+    document
+      .querySelector("#credits-dialog")!
+      .dispatchEvent(new Event("cancel", { cancelable: true }));
+    expect(closed).toHaveBeenCalledOnce();
+  } finally {
+    document.removeEventListener("credits-opened", opened);
+    document.removeEventListener("credits-closed", closed);
+  }
 });
 
 test("shows contributor profile links and excludes configured bots", () => {

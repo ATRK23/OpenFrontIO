@@ -104,8 +104,8 @@ describe("credits contributor data", () => {
       sortContributors(contributors, "alphabetical").map((p) => p.login),
     ).toEqual(["Alice", "Bob", "Zoe"]);
     expect(sortContributors(contributors).map((p) => p.login)).toEqual([
-      "Alice",
       "Bob",
+      "Alice",
       "Zoe",
     ]);
     expect(

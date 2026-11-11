@@ -47,9 +47,16 @@ export function openCredits(): void {
     })
     .sort((a, b) => collator.compare(a.name, b.name));
   let closing = false;
+  let musicEnded = false;
+  const endCreditsMusic = () => {
+    if (musicEnded) return;
+    musicEnded = true;
+    document.dispatchEvent(new Event("credits-closed"));
+  };
   const closeCredits = () => {
     if (closing) return;
     closing = true;
+    endCreditsMusic();
     stopAnimation();
     if (prefersReducedMotion()) {
       dialog.close();
@@ -218,6 +225,7 @@ export function openCredits(): void {
   );
   document.body.append(dialog);
   dialog.showModal();
+  document.dispatchEvent(new Event("credits-opened"));
   if (!prefersReducedMotion()) {
     dialog.animate([{ opacity: 0 }, { opacity: 1 }], {
       duration: creditsPresentation.modalFadeMs,
@@ -235,6 +243,7 @@ export function openCredits(): void {
   dialog.addEventListener(
     "close",
     () => {
+      endCreditsMusic();
       stopAnimation();
       dialog.remove();
     },

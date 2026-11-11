@@ -91,6 +91,8 @@ export function startMenuMusic(
   // policy. Never cleared: activation is sticky for the life of the document.
   let gestured = false;
   let teardownFadeIn: (() => void) | null = null;
+  // The modal may have opened before the lazily loaded audio module arrived.
+  let creditsOpen = document.querySelector("#credits-dialog[open]") !== null;
 
   /**
    * Stops the ramp wherever it is, leaving the volume untouched.
@@ -210,7 +212,13 @@ export function startMenuMusic(
       // browser's volume-lock state changes between two probes.
       const streaming = streamsMusic();
       theme = new Howl({
-        src: [assetUrl("sounds/music/menu-theme.mp3")],
+        src: [
+          assetUrl(
+            creditsOpen
+              ? "sounds/music/credits-theme.mp3"
+              : "sounds/music/menu-theme.mp3",
+          ),
+        ],
         loop: true,
         volume: 0,
         // Stream rather than decode 2.2 MB up front -- see the gameplay track
@@ -261,7 +269,13 @@ export function startMenuMusic(
     document.removeEventListener("keydown", onGesture);
   };
 
-  if (options?.gameInProgress !== true) arm();
+  if (options?.gameInProgress !== true) {
+    arm();
+    if (creditsOpen) {
+      gestured = true;
+      start();
+    }
+  }
 
   /**
    * Picks the theme up when the player turns music on, since start() declines
@@ -294,8 +308,7 @@ export function startMenuMusic(
     if (turnedOn && armed && gestured) start();
   });
 
-  document.addEventListener("game-starting", () => {
-    disarm();
+  const stopTheme = () => {
     if (theme === null) return;
     const ending = theme;
     theme = null;
@@ -318,6 +331,25 @@ export function startMenuMusic(
       ending.stop();
       ending.unload();
     });
+  };
+
+  const switchCredits = (open: boolean) => {
+    if (creditsOpen === open) return;
+    creditsOpen = open;
+    stopTheme();
+    if (armed) {
+      // Opening the credits follows a user gesture, including when that was
+      // the first interaction and the menu theme was still loading.
+      if (open) gestured = true;
+      if (gestured) start();
+    }
+  };
+
+  document.addEventListener("credits-opened", () => switchCredits(true));
+  document.addEventListener("credits-closed", () => switchCredits(false));
+  document.addEventListener("game-starting", () => {
+    disarm();
+    stopTheme();
   });
 
   document.addEventListener("menu-restored", arm);

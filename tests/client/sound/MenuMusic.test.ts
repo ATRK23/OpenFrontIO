@@ -162,6 +162,70 @@ const lastVolume = (howl: any) => {
 };
 
 describe("menu music", () => {
+  it("crossfades between menu and credits when the dialog opens and closes", () => {
+    vi.useFakeTimers();
+    startMenuMusic(mixer);
+    document.dispatchEvent(new Event("pointerdown"));
+    const menu = themes()[0];
+    menu.volume.mockImplementation((...args: number[]) =>
+      args.length ? args[0] : musicLevel,
+    );
+    menu.begin();
+    vi.advanceTimersByTime(2100);
+
+    document.dispatchEvent(new Event("credits-opened"));
+    const credits = howlInstances.find((howl) =>
+      howl.src.includes("credits-theme"),
+    );
+    expect(menu.fade).toHaveBeenCalledWith(musicLevel, 0, 700);
+    expect(mixer.unregister).toHaveBeenCalledWith(menu);
+    expect(credits.play).toHaveBeenCalled();
+    credits.volume.mockImplementation((...args: number[]) =>
+      args.length ? args[0] : musicLevel,
+    );
+    credits.begin();
+    vi.advanceTimersByTime(2100);
+    expect(mixer.register).toHaveBeenCalledWith(credits, "music");
+
+    document.dispatchEvent(new Event("credits-closed"));
+    expect(credits.fade).toHaveBeenCalledWith(musicLevel, 0, 700);
+    expect(themes()).toHaveLength(2);
+    expect(themes()[1].play).toHaveBeenCalled();
+  });
+
+  it("does not restart menu music when credits close after a game starts", () => {
+    startMenuMusic(mixer);
+    document.dispatchEvent(new Event("pointerdown"));
+    document.dispatchEvent(new Event("credits-opened"));
+    document.dispatchEvent(new Event("game-starting"));
+    document.dispatchEvent(new Event("credits-closed"));
+    expect(themes()).toHaveLength(1);
+  });
+
+  it("starts credits music when unmuted while the dialog is open", () => {
+    musicAudible = false;
+    startMenuMusic(mixer);
+    document.dispatchEvent(new Event("credits-opened"));
+    expect(howlInstances).toHaveLength(0);
+    musicAudible = true;
+    notifyChange("music");
+    expect(howlInstances[0].src).toContain("credits-theme.mp3");
+  });
+
+  it("starts the credits theme if the audio module loads after the dialog opens", () => {
+    const dialog = document.createElement("dialog");
+    dialog.id = "credits-dialog";
+    dialog.setAttribute("open", "");
+    document.body.append(dialog);
+    try {
+      startMenuMusic(mixer);
+      expect(howlInstances[0].src).toContain("credits-theme.mp3");
+      expect(howlInstances[0].play).toHaveBeenCalled();
+    } finally {
+      dialog.remove();
+    }
+  });
+
   it("streams the theme rather than decoding it up front", () => {
     startMenuMusic(mixer);
     // Browsers block audio until a gesture, so the Howl is only built here.

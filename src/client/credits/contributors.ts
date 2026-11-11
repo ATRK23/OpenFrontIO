@@ -1,7 +1,7 @@
 import { excludedContributors } from "./exclusions";
 
 /** Choose "alphabetical" or "known-lines" (most known lines first). */
-export const contributorSort: "alphabetical" | "known-lines" = "alphabetical";
+export const contributorSort: "alphabetical" | "known-lines" = "known-lines";
 
 export interface Contributor {
   login: string;
