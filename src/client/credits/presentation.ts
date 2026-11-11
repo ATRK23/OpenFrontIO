@@ -5,8 +5,8 @@ export const creditsPresentation = {
   modalFadeMs: 400,
   messageDelayMs: 250,
   endingPauseMs: 2250,
-  resumeDelayMs: 3000,
-  scrollPixelsPerSecond: 80,
-  accelerationMs: 1500,
+  resumeDelayMs: 2500,
+  scrollPixelsPerSecond: 70,
+  accelerationMs: 1250,
   slowdownDistancePx: 90,
 } as const;

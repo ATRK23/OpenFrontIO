@@ -60,12 +60,7 @@ export function animateCredits(
     lastTime = undefined;
     motionStart = undefined;
   };
-  for (const event of [
-    "wheel",
-    "touchstart",
-    "touchmove",
-    "pointerdown",
-  ] as const) {
+  for (const event of ["wheel", "touchstart", "touchmove"] as const) {
     container.addEventListener(event, pause, {
       passive: true,
       signal: abort.signal,

@@ -1,5 +1,6 @@
 import { afterEach, expect, test, vi } from "vitest";
 import { animateCredits } from "../../src/client/credits/CreditsAnimation";
+import { creditsPresentation } from "../../src/client/credits/presentation";
 import { prefersReducedMotion } from "../../src/client/utilities/ReducedMotion";
 
 vi.mock("../../src/client/utilities/ReducedMotion", () => ({
@@ -18,6 +19,38 @@ test("does not start automatic scrolling when reduced motion is enabled", () => 
   vi.stubGlobal("requestAnimationFrame", frame);
   const stop = animateCredits(document.createElement("div"), vi.fn());
   expect(frame).not.toHaveBeenCalled();
+  stop();
+});
+
+test("a simple pointer press does not interrupt the end of the credits", () => {
+  vi.useFakeTimers();
+  vi.mocked(prefersReducedMotion).mockReturnValue(false);
+  let nextFrame: FrameRequestCallback = () => {};
+  vi.stubGlobal(
+    "requestAnimationFrame",
+    vi.fn((callback: FrameRequestCallback) => {
+      nextFrame = callback;
+      return 42;
+    }),
+  );
+  vi.stubGlobal("cancelAnimationFrame", vi.fn());
+  const container = document.createElement("div");
+  container.innerHTML = "<div data-credits-farewell>Thank you</div>";
+  const farewell = container.querySelector<HTMLElement>(
+    "[data-credits-farewell]",
+  )!;
+  farewell.animate = vi.fn(() => ({ cancel: vi.fn() }) as unknown as Animation);
+  const complete = vi.fn();
+  const stop = animateCredits(container, complete);
+  nextFrame(10000);
+  nextFrame(10016);
+  container.dispatchEvent(new Event("pointerdown"));
+  vi.advanceTimersByTime(
+    creditsPresentation.endingPauseMs +
+      creditsPresentation.fadeDurationMs +
+      creditsPresentation.messageDelayMs,
+  );
+  expect(complete).toHaveBeenCalledOnce();
   stop();
 });
 

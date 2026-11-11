@@ -32,7 +32,7 @@ export function openCredits(): void {
   const dialog = document.createElement("dialog");
   dialog.id = "credits-dialog";
   dialog.className =
-    "fixed inset-0 m-0 flex h-[100dvh] w-full max-w-none max-h-none flex-col bg-zinc-950/95 text-white p-0";
+    "fixed inset-0 m-0 flex h-[100dvh] w-full max-w-none max-h-none select-none flex-col bg-zinc-950/95 text-white p-0";
   dialog.setAttribute("aria-labelledby", "credits-title");
   const collator = new Intl.Collator("en");
   const translatorSections = translatorsMarkdown
@@ -89,13 +89,14 @@ export function openCredits(): void {
       <main
         tabindex="0"
         autofocus
-        class="hide-scrollbar min-h-0 flex-1 overflow-y-auto scroll-pt-24 px-4 sm:px-6 text-center"
+        class="hide-scrollbar min-h-0 flex-1 overflow-y-auto scroll-pt-24 px-4 sm:px-6 text-center outline-none"
       >
-        <div class="min-h-full flex items-center justify-center">
+        <div class="mb-48 flex min-h-full items-center justify-center sm:mb-64">
           <img
             data-credits-logo
             src=${assetUrl("images/OpenFrontLogo.svg")}
             alt="OpenFront"
+            draggable="false"
             class="w-[80%] max-w-2xl max-h-[50vh] object-contain"
           />
         </div>
@@ -160,6 +161,7 @@ export function openCredits(): void {
           <img
             src=${assetUrl("maps/world/w2kland.webp")}
             alt=${translateText("map.world")}
+            draggable="false"
             width="2064"
             height="1032"
             loading="lazy"
@@ -187,6 +189,7 @@ export function openCredits(): void {
                             class="inline-block h-5 w-7 object-contain align-middle"
                             src=${assetUrl(`flags/${section.icon}.svg`)}
                             alt=""
+                            draggable="false"
                           />`
                         : null
                     }
@@ -211,6 +214,7 @@ export function openCredits(): void {
           <img
             src=${assetUrl("maps/brainrot/brainland.webp")}
             alt=${translateText("map.brainrot")}
+            draggable="false"
             width="2996"
             height="2352"
             loading="lazy"
@@ -245,7 +249,7 @@ export function openCredits(): void {
           </div>
         </section>
         <div
-          class="min-h-full flex items-center justify-center text-3xl sm:text-4xl font-bold"
+          class="mt-24 flex min-h-full items-center justify-center text-3xl font-bold sm:mt-32 sm:text-4xl"
         >
           <div data-credits-farewell>
             <p>${translateText("credits.thanks_for_playing")}</p>
