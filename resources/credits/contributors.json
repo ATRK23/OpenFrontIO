@@ -2,1384 +2,1660 @@
   "commit": "d03f24a6d4c4d44f4d3ee30a0bad44a093a169a7",
   "contributors": [
     {
-      "login": "evanpelle",
-      "url": "https://github.com/evanpelle",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "FloPinguin",
-      "url": "https://github.com/FloPinguin",
-      "knownLinesChanged": 77683
-    },
-    {
-      "login": "scottanderson",
-      "url": "https://github.com/scottanderson",
-      "knownLinesChanged": 41667
-    },
-    {
-      "login": "Celant",
-      "url": "https://github.com/Celant",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "Aotumuri",
-      "url": "https://github.com/Aotumuri",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "VariableVince",
-      "url": "https://github.com/VariableVince",
-      "knownLinesChanged": 59913
-    },
-    {
-      "login": "ryanbarlow97",
-      "url": "https://github.com/ryanbarlow97",
-      "knownLinesChanged": 83806
-    },
-    {
-      "login": "RickD004",
-      "url": "https://github.com/RickD004",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "NewHappyRabbit",
-      "url": "https://github.com/NewHappyRabbit",
-      "knownLinesChanged": 62660
-    },
-    {
-      "login": "DevelopingTom",
-      "url": "https://github.com/DevelopingTom",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "ilan-schemoul",
-      "url": "https://github.com/ilan-schemoul",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "iiamlewis",
-      "url": "https://github.com/iiamlewis",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "Zixer1",
-      "url": "https://github.com/Zixer1",
-      "knownLinesChanged": 14785
-    },
-    {
-      "login": "dependabot[bot]",
-      "url": "https://github.com/dependabot%5Bbot%5D",
-      "knownLinesChanged": 2939
-    },
-    {
-      "login": "Duwibi",
-      "url": "https://github.com/Duwibi",
-      "knownLinesChanged": 4021
-    },
-    {
-      "login": "jrouillard",
-      "url": "https://github.com/jrouillard",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "SunnyBoyWTF",
-      "url": "https://github.com/SunnyBoyWTF",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "LoSt543215543",
-      "url": "https://github.com/LoSt543215543",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "JB940",
-      "url": "https://github.com/JB940",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "bijx",
-      "url": "https://github.com/bijx",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "PatrickPlaysBadly",
-      "url": "https://github.com/PatrickPlaysBadly",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "scamiv",
-      "url": "https://github.com/scamiv",
-      "knownLinesChanged": 6541
-    },
-    {
-      "login": "crunchybbb2",
-      "url": "https://github.com/crunchybbb2",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "APuddle210",
-      "url": "https://github.com/APuddle210",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "wraith4081",
-      "url": "https://github.com/wraith4081",
-      "knownLinesChanged": 25670
-    },
-    {
-      "login": "deshack",
-      "url": "https://github.com/deshack",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "berkelmali",
-      "url": "https://github.com/berkelmali",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "PilkeySEK",
-      "url": "https://github.com/PilkeySEK",
-      "knownLinesChanged": 348
-    },
-    {
-      "login": "BeGj",
-      "url": "https://github.com/BeGj",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "DiesselOne",
-      "url": "https://github.com/DiesselOne",
-      "knownLinesChanged": 62704
-    },
-    {
-      "login": "1brucben",
-      "url": "https://github.com/1brucben",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "Aareksio",
-      "url": "https://github.com/Aareksio",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "q8gazy",
-      "url": "https://github.com/q8gazy",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "abdallahbahrawi1",
-      "url": "https://github.com/abdallahbahrawi1",
-      "knownLinesChanged": 3910
-    },
-    {
-      "login": "Codimow",
-      "url": "https://github.com/Codimow",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "TheGiraffe3",
-      "url": "https://github.com/TheGiraffe3",
-      "knownLinesChanged": 333
-    },
-    {
-      "login": "TKTK123456",
-      "url": "https://github.com/TKTK123456",
-      "knownLinesChanged": 965
-    },
-    {
-      "login": "babyboucher",
-      "url": "https://github.com/babyboucher",
-      "knownLinesChanged": 769
-    },
-    {
-      "login": "Lavodan",
-      "url": "https://github.com/Lavodan",
-      "knownLinesChanged": 456
-    },
-    {
-      "login": "Readixyee",
-      "url": "https://github.com/Readixyee",
-      "knownLinesChanged": 1505
-    },
-    {
-      "login": "tnhnblgl",
-      "url": "https://github.com/tnhnblgl",
-      "knownLinesChanged": 250
-    },
-    {
-      "login": "cazlabIO",
-      "url": "https://github.com/cazlabIO",
-      "knownLinesChanged": 10504
-    },
-    {
-      "login": "MRGhust",
-      "url": "https://github.com/MRGhust",
-      "knownLinesChanged": 2281
-    },
-    {
-      "login": "Kipstz",
-      "url": "https://github.com/Kipstz",
-      "knownLinesChanged": 2209
-    },
-    {
-      "login": "floriankilian",
-      "url": "https://github.com/floriankilian",
-      "knownLinesChanged": 631
-    },
-    {
-      "login": "mepoohsta",
-      "url": "https://github.com/mepoohsta",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "BrunoJurkovic",
-      "url": "https://github.com/BrunoJurkovic",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "aaa4xu",
-      "url": "https://github.com/aaa4xu",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "Tidwell",
-      "url": "https://github.com/Tidwell",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "GlacialDrift",
-      "url": "https://github.com/GlacialDrift",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "Sorikairox",
-      "url": "https://github.com/Sorikairox",
-      "knownLinesChanged": 94
-    },
-    {
-      "login": "TsProphet94",
-      "url": "https://github.com/TsProphet94",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "baculinivan-web",
-      "url": "https://github.com/baculinivan-web",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "aqw42",
-      "url": "https://github.com/aqw42",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "Boostry123",
-      "url": "https://github.com/Boostry123",
-      "knownLinesChanged": 127
-    },
-    {
-      "login": "gabigabogabu",
-      "url": "https://github.com/gabigabogabu",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "falcolnic",
-      "url": "https://github.com/falcolnic",
-      "knownLinesChanged": 446
-    },
-    {
-      "login": "blontd6",
-      "url": "https://github.com/blontd6",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "TylerHanavan",
-      "url": "https://github.com/TylerHanavan",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "14ROVI",
-      "url": "https://github.com/14ROVI",
-      "knownLinesChanged": 147
-    },
-    {
-      "login": "Maaxion",
-      "url": "https://github.com/Maaxion",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "martinIvovIv",
-      "url": "https://github.com/martinIvovIv",
-      "knownLinesChanged": 184
-    },
-    {
-      "login": "loan-mgt",
-      "url": "https://github.com/loan-mgt",
-      "knownLinesChanged": 103
-    },
-    {
-      "login": "ayushthepiro11-design",
-      "url": "https://github.com/ayushthepiro11-design",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "Katokoda",
-      "url": "https://github.com/Katokoda",
-      "knownLinesChanged": 243
-    },
-    {
-      "login": "Demonessica",
-      "url": "https://github.com/Demonessica",
-      "knownLinesChanged": 198
-    },
-    {
-      "login": "Restart1000",
-      "url": "https://github.com/Restart1000",
-      "knownLinesChanged": 1656
-    },
-    {
-      "login": "ItsTimeTooSleep",
-      "url": "https://github.com/ItsTimeTooSleep",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "VectorSophie",
-      "url": "https://github.com/VectorSophie",
-      "knownLinesChanged": 743
-    },
-    {
-      "login": "d3n0x8",
-      "url": "https://github.com/d3n0x8",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "devalnor",
-      "url": "https://github.com/devalnor",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "jachisc",
-      "url": "https://github.com/jachisc",
-      "knownLinesChanged": 764
-    },
-    {
-      "login": "djmrFunnyMan",
-      "url": "https://github.com/djmrFunnyMan",
-      "knownLinesChanged": 575
-    },
-    {
-      "login": "bibizu",
-      "url": "https://github.com/bibizu",
-      "knownLinesChanged": 407
-    },
-    {
-      "login": "UnBuiltTree",
-      "url": "https://github.com/UnBuiltTree",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "Skigim",
-      "url": "https://github.com/Skigim",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "RjManhas",
-      "url": "https://github.com/RjManhas",
-      "knownLinesChanged": 327
-    },
-    {
-      "login": "mrh0",
-      "url": "https://github.com/mrh0",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "leo-210",
-      "url": "https://github.com/leo-210",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "andrewNiziolek",
-      "url": "https://github.com/andrewNiziolek",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "kerodkibatu",
-      "url": "https://github.com/kerodkibatu",
-      "knownLinesChanged": 755
-    },
-    {
-      "login": "theRealestAEP",
-      "url": "https://github.com/theRealestAEP",
-      "knownLinesChanged": 266
-    },
-    {
-      "login": "pip-install-skills",
-      "url": "https://github.com/pip-install-skills",
-      "knownLinesChanged": 855
-    },
-    {
-      "login": "Rikardo66The100",
-      "url": "https://github.com/Rikardo66The100",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "TomaszOleszko",
-      "url": "https://github.com/TomaszOleszko",
-      "knownLinesChanged": 231
-    },
-    {
-      "login": "wjdunlop",
-      "url": "https://github.com/wjdunlop",
-      "knownLinesChanged": 141
-    },
-    {
-      "login": "Xuarig",
-      "url": "https://github.com/Xuarig",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "YoussfeCantCode",
-      "url": "https://github.com/YoussfeCantCode",
-      "knownLinesChanged": 313
-    },
-    {
-      "login": "icslucas",
-      "url": "https://github.com/icslucas",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "antoine-gannat",
-      "url": "https://github.com/antoine-gannat",
-      "knownLinesChanged": 106
-    },
-    {
-      "login": "rldtech",
-      "url": "https://github.com/rldtech",
-      "knownLinesChanged": 161
-    },
-    {
-      "login": "groffta",
-      "url": "https://github.com/groffta",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "plazmaezio",
-      "url": "https://github.com/plazmaezio",
-      "knownLinesChanged": 417
-    },
-    {
-      "login": "ArtZab0",
-      "url": "https://github.com/ArtZab0",
-      "knownLinesChanged": 15046
-    },
-    {
-      "login": "camclark",
-      "url": "https://github.com/camclark",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "Ble4Ch",
-      "url": "https://github.com/Ble4Ch",
-      "knownLinesChanged": 679
-    },
-    {
-      "login": "dbyale",
-      "url": "https://github.com/dbyale",
-      "knownLinesChanged": 64
-    },
-    {
-      "login": "ERHash",
-      "url": "https://github.com/ERHash",
-      "knownLinesChanged": 77
-    },
-    {
-      "login": "frederikja163",
-      "url": "https://github.com/frederikja163",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "ghisloufou",
-      "url": "https://github.com/ghisloufou",
-      "knownLinesChanged": 206
-    },
-    {
-      "login": "EyeSeeEm",
-      "url": "https://github.com/EyeSeeEm",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "Michal-Martinek",
-      "url": "https://github.com/Michal-Martinek",
-      "knownLinesChanged": 76
-    },
-    {
-      "login": "mike-s-zaugg",
-      "url": "https://github.com/mike-s-zaugg",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "NotRocketfish",
-      "url": "https://github.com/NotRocketfish",
-      "knownLinesChanged": 256
-    },
-    {
-      "login": "SGunner2014",
-      "url": "https://github.com/SGunner2014",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "xTonai",
-      "url": "https://github.com/xTonai",
-      "knownLinesChanged": 4
-    },
-    {
-      "login": "SpeakIsntThere",
-      "url": "https://github.com/SpeakIsntThere",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "ImDarkTom",
-      "url": "https://github.com/ImDarkTom",
-      "knownLinesChanged": 7
-    },
-    {
-      "login": "VahantSharma",
-      "url": "https://github.com/VahantSharma",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "WillTHomeGit",
-      "url": "https://github.com/WillTHomeGit",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "a-happy-goose",
-      "url": "https://github.com/a-happy-goose",
-      "knownLinesChanged": 66
-    },
-    {
-      "login": "eastwoodgrant",
-      "url": "https://github.com/eastwoodgrant",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "halil1054",
-      "url": "https://github.com/halil1054",
-      "knownLinesChanged": 5606
-    },
-    {
-      "login": "its-sii",
-      "url": "https://github.com/its-sii",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "kanekane0448",
-      "url": "https://github.com/kanekane0448",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "koffielyder",
-      "url": "https://github.com/koffielyder",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "michaelabilliot",
-      "url": "https://github.com/michaelabilliot",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "noahschmal",
-      "url": "https://github.com/noahschmal",
-      "knownLinesChanged": 1271
-    },
-    {
-      "login": "unique-coder-124",
-      "url": "https://github.com/unique-coder-124",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "unne27",
-      "url": "https://github.com/unne27",
-      "knownLinesChanged": 197
-    },
-    {
-      "login": "Dino0204",
-      "url": "https://github.com/Dino0204",
-      "knownLinesChanged": 226
-    },
-    {
-      "login": "Pesinario",
-      "url": "https://github.com/Pesinario",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "ralfisalhon",
-      "url": "https://github.com/ralfisalhon",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "alexjurkiewicz",
-      "url": "https://github.com/alexjurkiewicz",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "Ahmet-Dedeler",
-      "url": "https://github.com/Ahmet-Dedeler",
-      "knownLinesChanged": 44
-    },
-    {
-      "login": "lentscode",
-      "url": "https://github.com/lentscode",
-      "knownLinesChanged": 12
-    },
-    {
-      "login": "wozniakpl",
-      "url": "https://github.com/wozniakpl",
-      "knownLinesChanged": 433
-    },
-    {
-      "login": "bilgehandk",
-      "url": "https://github.com/bilgehandk",
-      "knownLinesChanged": 139
-    },
-    {
-      "login": "bypie5",
-      "url": "https://github.com/bypie5",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "FxMorin",
-      "url": "https://github.com/FxMorin",
-      "knownLinesChanged": 6
-    },
-    {
-      "login": "Automatron76",
-      "url": "https://github.com/Automatron76",
-      "knownLinesChanged": 8
-    },
-    {
-      "login": "6uzm4n",
-      "url": "https://github.com/6uzm4n",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "BrewedCoffee",
-      "url": "https://github.com/BrewedCoffee",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "FeldrinH",
-      "url": "https://github.com/FeldrinH",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "Killersoren",
-      "url": "https://github.com/Killersoren",
-      "knownLinesChanged": 415
-    },
-    {
-      "login": "Luke-Dawes",
-      "url": "https://github.com/Luke-Dawes",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "spicydll",
-      "url": "https://github.com/spicydll",
-      "knownLinesChanged": 70
-    },
-    {
-      "login": "MaxHT0x",
-      "url": "https://github.com/MaxHT0x",
-      "knownLinesChanged": 8
-    },
-    {
-      "login": "mokizzz",
-      "url": "https://github.com/mokizzz",
-      "knownLinesChanged": 65
-    },
-    {
-      "login": "neon0404",
-      "url": "https://github.com/neon0404",
-      "knownLinesChanged": 1613
-    },
-    {
-      "login": "Niels-600",
-      "url": "https://github.com/Niels-600",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "Kronbii",
-      "url": "https://github.com/Kronbii",
-      "knownLinesChanged": 472
-    },
-    {
-      "login": "sajadhsm",
-      "url": "https://github.com/sajadhsm",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "remi-sim",
-      "url": "https://github.com/remi-sim",
-      "knownLinesChanged": 162
-    },
-    {
-      "login": "ryanhaticus",
-      "url": "https://github.com/ryanhaticus",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "cosyntxd",
-      "url": "https://github.com/cosyntxd",
-      "knownLinesChanged": 105
-    },
-    {
-      "login": "fraxxio",
-      "url": "https://github.com/fraxxio",
-      "knownLinesChanged": 1
-    },
-    {
-      "login": "Restart2008",
-      "url": "https://github.com/Restart2008",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "RenanScarpin",
-      "url": "https://github.com/RenanScarpin",
-      "knownLinesChanged": 392
-    },
-    {
-      "login": "calyythae",
-      "url": "https://github.com/calyythae",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "sambokai",
-      "url": "https://github.com/sambokai",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "samisbakedham",
-      "url": "https://github.com/samisbakedham",
-      "knownLinesChanged": 11
-    },
-    {
-      "login": "sardidefcon",
-      "url": "https://github.com/sardidefcon",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "seanlowe",
-      "url": "https://github.com/seanlowe",
-      "knownLinesChanged": 21
-    },
-    {
-      "login": "shaan150",
-      "url": "https://github.com/shaan150",
-      "knownLinesChanged": 171
-    },
-    {
-      "login": "SkyElder2",
-      "url": "https://github.com/SkyElder2",
-      "knownLinesChanged": 67
-    },
-    {
-      "login": "antigrid",
-      "url": "https://github.com/antigrid",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "SwayLE3",
-      "url": "https://github.com/SwayLE3",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "TLS15",
-      "url": "https://github.com/TLS15",
-      "knownLinesChanged": 125
-    },
-    {
-      "login": "mef51",
-      "url": "https://github.com/mef51",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "Mubelotix",
-      "url": "https://github.com/Mubelotix",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "MushroomLamp",
-      "url": "https://github.com/MushroomLamp",
-      "knownLinesChanged": 571
-    },
-    {
-      "login": "Navaneethp007",
-      "url": "https://github.com/Navaneethp007",
-      "knownLinesChanged": 202
-    },
-    {
-      "login": "Niketion",
-      "url": "https://github.com/Niketion",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "jerryjhird",
-      "url": "https://github.com/jerryjhird",
-      "knownLinesChanged": 8
-    },
-    {
-      "login": "Nonolanlan1007",
-      "url": "https://github.com/Nonolanlan1007",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "omrih4",
-      "url": "https://github.com/omrih4",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "slewinus",
-      "url": "https://github.com/slewinus",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "PGrayCS",
-      "url": "https://github.com/PGrayCS",
-      "knownLinesChanged": 163
-    },
-    {
-      "login": "NewYearNewPhil",
-      "url": "https://github.com/NewYearNewPhil",
-      "knownLinesChanged": 78
-    },
-    {
-      "login": "pierrebrtr",
-      "url": "https://github.com/pierrebrtr",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "Poddster",
-      "url": "https://github.com/Poddster",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "prajaybasu",
-      "url": "https://github.com/prajaybasu",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "QuentinSiruguet",
-      "url": "https://github.com/QuentinSiruguet",
-      "knownLinesChanged": 68
-    },
-    {
-      "login": "hourianto",
-      "url": "https://github.com/hourianto",
-      "knownLinesChanged": 52
-    },
-    {
-      "login": "jacks0nX",
-      "url": "https://github.com/jacks0nX",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "fantom845",
-      "url": "https://github.com/fantom845",
-      "knownLinesChanged": 2
-    },
-    {
-      "login": "nwcubeok",
-      "url": "https://github.com/nwcubeok",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "oggolow",
-      "url": "https://github.com/oggolow",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "oleksandr-shysh",
-      "url": "https://github.com/oleksandr-shysh",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "opressorMk2",
-      "url": "https://github.com/opressorMk2",
-      "knownLinesChanged": 96
-    },
-    {
-      "login": "qunash",
-      "url": "https://github.com/qunash",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "richardroy",
-      "url": "https://github.com/richardroy",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "robert-pitt-foodhub",
-      "url": "https://github.com/robert-pitt-foodhub",
-      "knownLinesChanged": 7
-    },
-    {
-      "login": "rubenperezrial",
-      "url": "https://github.com/rubenperezrial",
-      "knownLinesChanged": 25
-    },
-    {
-      "login": "sidneyprins",
-      "url": "https://github.com/sidneyprins",
-      "knownLinesChanged": 183
-    },
-    {
-      "login": "thebananamoon",
-      "url": "https://github.com/thebananamoon",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "torturado",
-      "url": "https://github.com/torturado",
-      "knownLinesChanged": 85
-    },
-    {
-      "login": "tropptr-torrptrop",
-      "url": "https://github.com/tropptr-torrptrop",
-      "knownLinesChanged": 222
-    },
-    {
-      "login": "truffle383-byte",
-      "url": "https://github.com/truffle383-byte",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "youtsuhodev",
-      "url": "https://github.com/youtsuhodev",
-      "knownLinesChanged": 32
-    },
-    {
-      "login": "newhajinyoon",
-      "url": "https://github.com/newhajinyoon",
-      "knownLinesChanged": 3
-    },
-    {
-      "login": "thomastschinkel",
-      "url": "https://github.com/thomastschinkel",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "eauchs",
-      "url": "https://github.com/eauchs",
-      "knownLinesChanged": 1026
-    },
-    {
-      "login": "tiago154",
-      "url": "https://github.com/tiago154",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "TigerMcSwane",
-      "url": "https://github.com/TigerMcSwane",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "Tfc538",
-      "url": "https://github.com/Tfc538",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "PapeThePope",
-      "url": "https://github.com/PapeThePope",
-      "knownLinesChanged": 236
-    },
-    {
-      "login": "IronMine",
-      "url": "https://github.com/IronMine",
-      "knownLinesChanged": 15094
-    },
-    {
-      "login": "U-LF",
-      "url": "https://github.com/U-LF",
-      "knownLinesChanged": 827
-    },
-    {
-      "login": "wneel",
-      "url": "https://github.com/wneel",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "Sashazach",
-      "url": "https://github.com/Sashazach",
-      "knownLinesChanged": 2
-    },
-    {
-      "login": "aConifer",
-      "url": "https://github.com/aConifer",
-      "knownLinesChanged": 56
-    },
-    {
-      "login": "af-inet",
-      "url": "https://github.com/af-inet",
-      "knownLinesChanged": 5
-    },
-    {
-      "login": "devynlynch",
-      "url": "https://github.com/devynlynch",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "eshen16",
-      "url": "https://github.com/eshen16",
-      "knownLinesChanged": 8
-    },
-    {
-      "login": "evadua",
-      "url": "https://github.com/evadua",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "g-santos-m",
-      "url": "https://github.com/g-santos-m",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "GhadiSaab",
-      "url": "https://github.com/GhadiSaab",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "CodingSelim",
-      "url": "https://github.com/CodingSelim",
-      "knownLinesChanged": 611
-    },
-    {
-      "login": "CrackeRR11",
-      "url": "https://github.com/CrackeRR11",
-      "knownLinesChanged": 799
-    },
-    {
-      "login": "Crimson341",
-      "url": "https://github.com/Crimson341",
-      "knownLinesChanged": 262
-    },
-    {
-      "login": "DeLoWaN",
-      "url": "https://github.com/DeLoWaN",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "Koranir",
-      "url": "https://github.com/Koranir",
-      "knownLinesChanged": 8
-    },
-    {
-      "login": "dengh",
-      "url": "https://github.com/dengh",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "DanyPops",
-      "url": "https://github.com/DanyPops",
-      "knownLinesChanged": 44
-    },
-    {
-      "login": "woodydrn",
-      "url": "https://github.com/woodydrn",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "DenelDuck",
-      "url": "https://github.com/DenelDuck",
-      "knownLinesChanged": 3
-    },
-    {
-      "login": "drillskibo",
-      "url": "https://github.com/drillskibo",
-      "knownLinesChanged": 3
-    },
-    {
-      "login": "E-EE-E",
-      "url": "https://github.com/E-EE-E",
-      "knownLinesChanged": 2
-    },
-    {
-      "login": "Efnilite",
-      "url": "https://github.com/Efnilite",
-      "knownLinesChanged": 3
-    },
-    {
-      "login": "ElMelchizedek",
-      "url": "https://github.com/ElMelchizedek",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "Egraveline",
-      "url": "https://github.com/Egraveline",
-      "knownLinesChanged": 380
-    },
-    {
-      "login": "FedotCompot",
-      "url": "https://github.com/FedotCompot",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "franzvrolijk",
-      "url": "https://github.com/franzvrolijk",
-      "knownLinesChanged": 14
-    },
-    {
-      "login": "Saphereye",
-      "url": "https://github.com/Saphereye",
-      "knownLinesChanged": 207
-    },
-    {
-      "login": "AlexBesios",
-      "url": "https://github.com/AlexBesios",
-      "knownLinesChanged": 338
-    },
-    {
-      "login": "monerofglory",
-      "url": "https://github.com/monerofglory",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "AlexandreCassagne",
-      "url": "https://github.com/AlexandreCassagne",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "AmanorsElliot",
-      "url": "https://github.com/AmanorsElliot",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "angeluriot",
-      "url": "https://github.com/angeluriot",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "AppieKalac",
-      "url": "https://github.com/AppieKalac",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "Nephty",
-      "url": "https://github.com/Nephty",
-      "knownLinesChanged": 161
-    },
-    {
-      "login": "ashique-perumbavoor",
-      "url": "https://github.com/ashique-perumbavoor",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "avkean",
-      "url": "https://github.com/avkean",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "Baguette8ot",
-      "url": "https://github.com/Baguette8ot",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "bsiguret",
-      "url": "https://github.com/bsiguret",
-      "knownLinesChanged": 1
-    },
-    {
-      "login": "Caidora",
-      "url": "https://github.com/Caidora",
-      "knownLinesChanged": 2
-    },
-    {
-      "login": "Bornasm",
-      "url": "https://github.com/Bornasm",
-      "knownLinesChanged": 5
-    },
-    {
-      "login": "nottirb",
-      "url": "https://github.com/nottirb",
-      "knownLinesChanged": 68
-    },
-    {
-      "login": "clounie",
-      "url": "https://github.com/clounie",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "MichaelK05-dev",
-      "url": "https://github.com/MichaelK05-dev",
-      "knownLinesChanged": 10
-    },
-    {
-      "login": "KomyakDev",
-      "url": "https://github.com/KomyakDev",
-      "knownLinesChanged": 91
-    },
-    {
-      "login": "nomeaning-3336",
-      "url": "https://github.com/nomeaning-3336",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "landkirk",
-      "url": "https://github.com/landkirk",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "killerwombat02",
-      "url": "https://github.com/killerwombat02",
-      "knownLinesChanged": 293
-    },
-    {
-      "login": "LoackyBit",
-      "url": "https://github.com/LoackyBit",
-      "knownLinesChanged": 146
-    },
-    {
-      "login": "Loncile",
-      "url": "https://github.com/Loncile",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "lounnight",
-      "url": "https://github.com/lounnight",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "LucasLion",
-      "url": "https://github.com/LucasLion",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "leivadev",
-      "url": "https://github.com/leivadev",
-      "knownLinesChanged": 14
-    },
-    {
-      "login": "LJoyL",
-      "url": "https://github.com/LJoyL",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "MagnanJules",
-      "url": "https://github.com/MagnanJules",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "mananlalwani",
-      "url": "https://github.com/mananlalwani",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "izub",
-      "url": "https://github.com/izub",
-      "knownLinesChanged": 9
-    },
-    {
-      "login": "M-Zoldak",
-      "url": "https://github.com/M-Zoldak",
-      "knownLinesChanged": 3
-    },
-    {
-      "login": "Mehmet-KOZAN-bit",
-      "url": "https://github.com/Mehmet-KOZAN-bit",
-      "knownLinesChanged": null
-    },
-    {
-      "login": "MitchZinck",
-      "url": "https://github.com/MitchZinck",
-      "knownLinesChanged": null
-    },
-    {
+      "githubId": 141027308,
       "login": "0xSYJiK",
       "url": "https://github.com/0xSYJiK",
       "knownLinesChanged": 5
     },
     {
-      "login": "EFCTO",
-      "url": "https://github.com/EFCTO",
-      "knownLinesChanged": 2
+      "githubId": 29734170,
+      "login": "14ROVI",
+      "url": "https://github.com/14ROVI",
+      "knownLinesChanged": 147
     },
     {
-      "login": "GabeK0",
-      "url": "https://github.com/GabeK0",
+      "githubId": 207947977,
+      "login": "1brucben",
+      "url": "https://github.com/1brucben",
+      "knownLinesChanged": 1427
+    },
+    {
+      "githubId": 25953122,
+      "login": "6uzm4n",
+      "url": "https://github.com/6uzm4n",
       "knownLinesChanged": null
     },
     {
-      "login": "gabrielJacq",
-      "url": "https://github.com/gabrielJacq",
-      "knownLinesChanged": 128
+      "githubId": 288486524,
+      "login": "a-happy-goose",
+      "url": "https://github.com/a-happy-goose",
+      "knownLinesChanged": 66
     },
     {
+      "githubId": 1071970,
+      "login": "aaa4xu",
+      "url": "https://github.com/aaa4xu",
+      "knownLinesChanged": 7299
+    },
+    {
+      "githubId": 11166786,
+      "login": "Aareksio",
+      "url": "https://github.com/Aareksio",
+      "knownLinesChanged": 26497
+    },
+    {
+      "githubId": 140177728,
+      "login": "abdallahbahrawi1",
+      "url": "https://github.com/abdallahbahrawi1",
+      "knownLinesChanged": 3910
+    },
+    {
+      "githubId": 69027186,
+      "login": "aConifer",
+      "url": "https://github.com/aConifer",
+      "knownLinesChanged": 56
+    },
+    {
+      "githubId": 4893466,
+      "login": "af-inet",
+      "url": "https://github.com/af-inet",
+      "knownLinesChanged": 5
+    },
+    {
+      "githubId": 105894172,
+      "login": "Ahmet-Dedeler",
+      "url": "https://github.com/Ahmet-Dedeler",
+      "knownLinesChanged": 44
+    },
+    {
+      "githubId": 42849856,
       "login": "akkaz",
       "url": "https://github.com/akkaz",
       "knownLinesChanged": 189
     },
     {
+      "githubId": 541043,
+      "login": "AlexandreCassagne",
+      "url": "https://github.com/AlexandreCassagne",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 151558721,
+      "login": "AlexBesios",
+      "url": "https://github.com/AlexBesios",
+      "knownLinesChanged": 338
+    },
+    {
+      "githubId": 379509,
+      "login": "alexjurkiewicz",
+      "url": "https://github.com/alexjurkiewicz",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 249709677,
+      "login": "AmanorsElliot",
+      "url": "https://github.com/AmanorsElliot",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 17570991,
+      "login": "andrewNiziolek",
+      "url": "https://github.com/andrewNiziolek",
+      "knownLinesChanged": 479
+    },
+    {
+      "githubId": 46031994,
+      "login": "angeluriot",
+      "url": "https://github.com/angeluriot",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 252745584,
+      "login": "antigrid",
+      "url": "https://github.com/antigrid",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 16439272,
+      "login": "antoine-gannat",
+      "url": "https://github.com/antoine-gannat",
+      "knownLinesChanged": 471
+    },
+    {
+      "githubId": 177696764,
+      "login": "Aotumuri",
+      "url": "https://github.com/Aotumuri",
+      "knownLinesChanged": 142918
+    },
+    {
+      "githubId": 217355059,
+      "login": "AppieKalac",
+      "url": "https://github.com/AppieKalac",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 18476241,
+      "login": "APuddle210",
+      "url": "https://github.com/APuddle210",
+      "knownLinesChanged": 69917
+    },
+    {
+      "githubId": 25183686,
+      "login": "aqw42",
+      "url": "https://github.com/aqw42",
+      "knownLinesChanged": 352
+    },
+    {
+      "githubId": 47839240,
+      "login": "ArtZab0",
+      "url": "https://github.com/ArtZab0",
+      "knownLinesChanged": 15046
+    },
+    {
+      "githubId": 67498676,
+      "login": "ashique-perumbavoor",
+      "url": "https://github.com/ashique-perumbavoor",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 58086174,
+      "login": "Automatron76",
+      "url": "https://github.com/Automatron76",
+      "knownLinesChanged": 8
+    },
+    {
+      "githubId": 76203167,
+      "login": "avkean",
+      "url": "https://github.com/avkean",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 237785622,
+      "login": "ayushthepiro11-design",
+      "url": "https://github.com/ayushthepiro11-design",
+      "knownLinesChanged": 937
+    },
+    {
+      "githubId": 48159308,
+      "login": "babyboucher",
+      "url": "https://github.com/babyboucher",
+      "knownLinesChanged": 769
+    },
+    {
+      "githubId": 244730970,
+      "login": "baculinivan-web",
+      "url": "https://github.com/baculinivan-web",
+      "knownLinesChanged": 2096
+    },
+    {
+      "githubId": 223760869,
+      "login": "Baguette8ot",
+      "url": "https://github.com/Baguette8ot",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 357860,
+      "login": "BeGj",
+      "url": "https://github.com/BeGj",
+      "knownLinesChanged": 24760
+    },
+    {
+      "githubId": 235513704,
+      "login": "berkelmali",
+      "url": "https://github.com/berkelmali",
+      "knownLinesChanged": 748
+    },
+    {
+      "githubId": 104801209,
+      "login": "bibizu",
+      "url": "https://github.com/bibizu",
+      "knownLinesChanged": 407
+    },
+    {
+      "githubId": 22181495,
+      "login": "bijx",
+      "url": "https://github.com/bijx",
+      "knownLinesChanged": 4827
+    },
+    {
+      "githubId": 64328743,
+      "login": "bilgehandk",
+      "url": "https://github.com/bilgehandk",
+      "knownLinesChanged": 139
+    },
+    {
+      "githubId": 45428623,
+      "login": "Ble4Ch",
+      "url": "https://github.com/Ble4Ch",
+      "knownLinesChanged": 679
+    },
+    {
+      "githubId": 183304852,
+      "login": "blontd6",
+      "url": "https://github.com/blontd6",
+      "knownLinesChanged": 78
+    },
+    {
+      "githubId": 100792995,
+      "login": "Boostry123",
+      "url": "https://github.com/Boostry123",
+      "knownLinesChanged": 127
+    },
+    {
+      "githubId": 16725570,
+      "login": "Bornasm",
+      "url": "https://github.com/Bornasm",
+      "knownLinesChanged": 5
+    },
+    {
+      "githubId": 29295325,
+      "login": "BrewedCoffee",
+      "url": "https://github.com/BrewedCoffee",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 28235257,
+      "login": "BrunoJurkovic",
+      "url": "https://github.com/BrunoJurkovic",
+      "knownLinesChanged": 1100
+    },
+    {
+      "githubId": 30038522,
+      "login": "bsiguret",
+      "url": "https://github.com/bsiguret",
+      "knownLinesChanged": 1
+    },
+    {
+      "githubId": 9089108,
+      "login": "bypie5",
+      "url": "https://github.com/bypie5",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 48109706,
+      "login": "Caidora",
+      "url": "https://github.com/Caidora",
+      "knownLinesChanged": 2
+    },
+    {
+      "githubId": 221409917,
+      "login": "calyythae",
+      "url": "https://github.com/calyythae",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 18041541,
+      "login": "camclark",
+      "url": "https://github.com/camclark",
+      "knownLinesChanged": 782
+    },
+    {
+      "githubId": 305021713,
+      "login": "cazlabIO",
+      "url": "https://github.com/cazlabIO",
+      "knownLinesChanged": 10504
+    },
+    {
+      "githubId": 4339776,
+      "login": "Celant",
+      "url": "https://github.com/Celant",
+      "knownLinesChanged": 175585
+    },
+    {
+      "githubId": 11947182,
+      "login": "clounie",
+      "url": "https://github.com/clounie",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 178092576,
+      "login": "Codimow",
+      "url": "https://github.com/Codimow",
+      "knownLinesChanged": 1241
+    },
+    {
+      "githubId": 139068169,
+      "login": "CodingSelim",
+      "url": "https://github.com/CodingSelim",
+      "knownLinesChanged": 611
+    },
+    {
+      "githubId": 110003521,
+      "login": "cosyntxd",
+      "url": "https://github.com/cosyntxd",
+      "knownLinesChanged": 105
+    },
+    {
+      "githubId": 92652241,
+      "login": "CrackeRR11",
+      "url": "https://github.com/CrackeRR11",
+      "knownLinesChanged": 799
+    },
+    {
+      "githubId": 150315417,
+      "login": "Crimson341",
+      "url": "https://github.com/Crimson341",
+      "knownLinesChanged": 262
+    },
+    {
+      "githubId": 281815009,
+      "login": "crunchybbb2",
+      "url": "https://github.com/crunchybbb2",
+      "knownLinesChanged": 74883
+    },
+    {
+      "githubId": 154247067,
+      "login": "d3n0x8",
+      "url": "https://github.com/d3n0x8",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 54398565,
+      "login": "DanyPops",
+      "url": "https://github.com/DanyPops",
+      "knownLinesChanged": 44
+    },
+    {
+      "githubId": 122132914,
+      "login": "dbyale",
+      "url": "https://github.com/dbyale",
+      "knownLinesChanged": 64
+    },
+    {
+      "githubId": 16705147,
+      "login": "DeLoWaN",
+      "url": "https://github.com/DeLoWaN",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 37988730,
+      "login": "Demonessica",
+      "url": "https://github.com/Demonessica",
+      "knownLinesChanged": 198
+    },
+    {
+      "githubId": 43882337,
+      "login": "DenelDuck",
+      "url": "https://github.com/DenelDuck",
+      "knownLinesChanged": 3
+    },
+    {
+      "githubId": 4354075,
+      "login": "dengh",
+      "url": "https://github.com/dengh",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 49699333,
+      "login": "dependabot[bot]",
+      "url": "https://github.com/dependabot%5Bbot%5D",
+      "knownLinesChanged": 2939
+    },
+    {
+      "githubId": 2034213,
+      "login": "deshack",
+      "url": "https://github.com/deshack",
+      "knownLinesChanged": 2640
+    },
+    {
+      "githubId": 226090,
+      "login": "devalnor",
+      "url": "https://github.com/devalnor",
+      "knownLinesChanged": 820
+    },
+    {
+      "githubId": 3910164,
+      "login": "DevelopingTom",
+      "url": "https://github.com/DevelopingTom",
+      "knownLinesChanged": 12545
+    },
+    {
+      "githubId": 9873460,
+      "login": "devynlynch",
+      "url": "https://github.com/devynlynch",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 49088589,
+      "login": "DiesselOne",
+      "url": "https://github.com/DiesselOne",
+      "knownLinesChanged": 63307
+    },
+    {
+      "githubId": 162967089,
+      "login": "Dino0204",
+      "url": "https://github.com/Dino0204",
+      "knownLinesChanged": 226
+    },
+    {
+      "githubId": 68905776,
+      "login": "djmrFunnyMan",
+      "url": "https://github.com/djmrFunnyMan",
+      "knownLinesChanged": 575
+    },
+    {
+      "githubId": 59177241,
+      "login": "drillskibo",
+      "url": "https://github.com/drillskibo",
+      "knownLinesChanged": 1349
+    },
+    {
+      "githubId": 86431918,
+      "login": "Duwibi",
+      "url": "https://github.com/Duwibi",
+      "knownLinesChanged": 9717
+    },
+    {
+      "githubId": 38805542,
+      "login": "E-EE-E",
+      "url": "https://github.com/E-EE-E",
+      "knownLinesChanged": 2
+    },
+    {
+      "githubId": 308940434,
+      "login": "eastwoodgrant",
+      "url": "https://github.com/eastwoodgrant",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 138336683,
+      "login": "eauchs",
+      "url": "https://github.com/eauchs",
+      "knownLinesChanged": 1026
+    },
+    {
+      "githubId": 109016552,
+      "login": "EFCTO",
+      "url": "https://github.com/EFCTO",
+      "knownLinesChanged": 2
+    },
+    {
+      "githubId": 35348263,
+      "login": "Efnilite",
+      "url": "https://github.com/Efnilite",
+      "knownLinesChanged": 3
+    },
+    {
+      "githubId": 28783306,
+      "login": "Egraveline",
+      "url": "https://github.com/Egraveline",
+      "knownLinesChanged": 380
+    },
+    {
+      "githubId": 16742221,
+      "login": "ElMelchizedek",
+      "url": "https://github.com/ElMelchizedek",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 67637529,
+      "login": "ERHash",
+      "url": "https://github.com/ERHash",
+      "knownLinesChanged": 77
+    },
+    {
+      "githubId": 64906926,
+      "login": "eshen16",
+      "url": "https://github.com/eshen16",
+      "knownLinesChanged": 8
+    },
+    {
+      "githubId": 279571597,
+      "login": "evadua",
+      "url": "https://github.com/evadua",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 5687109,
+      "login": "evanpelle",
+      "url": "https://github.com/evanpelle",
+      "knownLinesChanged": 1179384
+    },
+    {
+      "githubId": 588917,
+      "login": "EyeSeeEm",
+      "url": "https://github.com/EyeSeeEm",
+      "knownLinesChanged": 71
+    },
+    {
+      "githubId": 76709589,
+      "login": "falcolnic",
+      "url": "https://github.com/falcolnic",
+      "knownLinesChanged": 446
+    },
+    {
+      "githubId": 77169323,
+      "login": "fantom845",
+      "url": "https://github.com/fantom845",
+      "knownLinesChanged": 2
+    },
+    {
+      "githubId": 46230197,
+      "login": "FedotCompot",
+      "url": "https://github.com/FedotCompot",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 5256211,
+      "login": "FeldrinH",
+      "url": "https://github.com/FeldrinH",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 25036848,
+      "login": "FloPinguin",
+      "url": "https://github.com/FloPinguin",
+      "knownLinesChanged": 92787
+    },
+    {
+      "githubId": 34104015,
+      "login": "floriankilian",
+      "url": "https://github.com/floriankilian",
+      "knownLinesChanged": 631
+    },
+    {
+      "githubId": 37187509,
+      "login": "franzvrolijk",
+      "url": "https://github.com/franzvrolijk",
+      "knownLinesChanged": 14
+    },
+    {
+      "githubId": 101990229,
+      "login": "fraxxio",
+      "url": "https://github.com/fraxxio",
+      "knownLinesChanged": 1
+    },
+    {
+      "githubId": 20968096,
+      "login": "frederikja163",
+      "url": "https://github.com/frederikja163",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 28154542,
+      "login": "FxMorin",
+      "url": "https://github.com/FxMorin",
+      "knownLinesChanged": 436
+    },
+    {
+      "githubId": 176842741,
+      "login": "g-santos-m",
+      "url": "https://github.com/g-santos-m",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 3013261,
+      "login": "GabeK0",
+      "url": "https://github.com/GabeK0",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 9782625,
+      "login": "gabigabogabu",
+      "url": "https://github.com/gabigabogabu",
+      "knownLinesChanged": 298
+    },
+    {
+      "githubId": 72448793,
+      "login": "gabrielJacq",
+      "url": "https://github.com/gabrielJacq",
+      "knownLinesChanged": 128
+    },
+    {
+      "githubId": 171224544,
+      "login": "GhadiSaab",
+      "url": "https://github.com/GhadiSaab",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 23282302,
+      "login": "ghisloufou",
+      "url": "https://github.com/ghisloufou",
+      "knownLinesChanged": 236
+    },
+    {
+      "githubId": 84293412,
+      "login": "GlacialDrift",
+      "url": "https://github.com/GlacialDrift",
+      "knownLinesChanged": 2271
+    },
+    {
+      "githubId": 62095555,
       "login": "Greymald",
       "url": "https://github.com/Greymald",
       "knownLinesChanged": 4
     },
     {
-      "login": "Vermylion",
-      "url": "https://github.com/Vermylion",
+      "githubId": 87312000,
+      "login": "groffta",
+      "url": "https://github.com/groffta",
       "knownLinesChanged": null
     },
     {
+      "githubId": 105168132,
+      "login": "halil1054",
+      "url": "https://github.com/halil1054",
+      "knownLinesChanged": 5606
+    },
+    {
+      "githubId": 40712686,
       "login": "HanzCEO",
       "url": "https://github.com/HanzCEO",
       "knownLinesChanged": null
     },
     {
+      "githubId": 98530365,
       "login": "Hauke12345",
       "url": "https://github.com/Hauke12345",
       "knownLinesChanged": 350
     },
     {
+      "githubId": 98135968,
       "login": "Henry-Santa",
       "url": "https://github.com/Henry-Santa",
       "knownLinesChanged": 11
     },
     {
+      "githubId": 201595484,
       "login": "Hiphex",
       "url": "https://github.com/Hiphex",
       "knownLinesChanged": null
     },
     {
+      "githubId": 111693579,
       "login": "hkio120",
       "url": "https://github.com/hkio120",
       "knownLinesChanged": 26
     },
     {
+      "githubId": 175479716,
+      "login": "hourianto",
+      "url": "https://github.com/hourianto",
+      "knownLinesChanged": 52
+    },
+    {
+      "githubId": 203433015,
+      "login": "icslucas",
+      "url": "https://github.com/icslucas",
+      "knownLinesChanged": 2305
+    },
+    {
+      "githubId": 6383745,
+      "login": "iiamlewis",
+      "url": "https://github.com/iiamlewis",
+      "knownLinesChanged": 91803
+    },
+    {
+      "githubId": 9869317,
+      "login": "ilan-schemoul",
+      "url": "https://github.com/ilan-schemoul",
+      "knownLinesChanged": 8367
+    },
+    {
+      "githubId": 88888824,
+      "login": "ImDarkTom",
+      "url": "https://github.com/ImDarkTom",
+      "knownLinesChanged": 7
+    },
+    {
+      "githubId": 44125476,
+      "login": "IronMine",
+      "url": "https://github.com/IronMine",
+      "knownLinesChanged": 15094
+    },
+    {
+      "githubId": 22448228,
+      "login": "its-sii",
+      "url": "https://github.com/its-sii",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 171561185,
+      "login": "ItsTimeTooSleep",
+      "url": "https://github.com/ItsTimeTooSleep",
+      "knownLinesChanged": 175
+    },
+    {
+      "githubId": 3972940,
+      "login": "izub",
+      "url": "https://github.com/izub",
+      "knownLinesChanged": 9
+    },
+    {
+      "githubId": 73446187,
+      "login": "jachisc",
+      "url": "https://github.com/jachisc",
+      "knownLinesChanged": 764
+    },
+    {
+      "githubId": 2789832,
+      "login": "jacks0nX",
+      "url": "https://github.com/jacks0nX",
+      "knownLinesChanged": 1085
+    },
+    {
+      "githubId": 113132470,
       "login": "JamesRand12",
       "url": "https://github.com/JamesRand12",
       "knownLinesChanged": 85
     },
     {
+      "githubId": 39035187,
       "login": "Jarifa",
       "url": "https://github.com/Jarifa",
       "knownLinesChanged": 133
     },
     {
+      "githubId": 5811523,
+      "login": "JB940",
+      "url": "https://github.com/JB940",
+      "knownLinesChanged": 26272
+    },
+    {
+      "githubId": 166717111,
+      "login": "jerryjhird",
+      "url": "https://github.com/jerryjhird",
+      "knownLinesChanged": 8
+    },
+    {
+      "githubId": 8647246,
       "login": "JohnHarkendorff",
       "url": "https://github.com/JohnHarkendorff",
       "knownLinesChanged": null
     },
     {
+      "githubId": 7083755,
       "login": "joostlek",
       "url": "https://github.com/joostlek",
       "knownLinesChanged": null
     },
     {
+      "githubId": 24702802,
       "login": "joshuabradley012",
       "url": "https://github.com/joshuabradley012",
       "knownLinesChanged": null
     },
     {
+      "githubId": 1590758,
+      "login": "jrouillard",
+      "url": "https://github.com/jrouillard",
+      "knownLinesChanged": 10553
+    },
+    {
+      "githubId": 206015175,
+      "login": "kanekane0448",
+      "url": "https://github.com/kanekane0448",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 79760461,
+      "login": "Katokoda",
+      "url": "https://github.com/Katokoda",
+      "knownLinesChanged": 243
+    },
+    {
+      "githubId": 88666160,
+      "login": "kerodkibatu",
+      "url": "https://github.com/kerodkibatu",
+      "knownLinesChanged": 1743
+    },
+    {
+      "githubId": 45606328,
+      "login": "Killersoren",
+      "url": "https://github.com/Killersoren",
+      "knownLinesChanged": 415
+    },
+    {
+      "githubId": 126989095,
+      "login": "killerwombat02",
+      "url": "https://github.com/killerwombat02",
+      "knownLinesChanged": 293
+    },
+    {
+      "githubId": 140314732,
+      "login": "Kipstz",
+      "url": "https://github.com/Kipstz",
+      "knownLinesChanged": 2209
+    },
+    {
+      "githubId": 8748777,
+      "login": "koffielyder",
+      "url": "https://github.com/koffielyder",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 117581899,
+      "login": "KomyakDev",
+      "url": "https://github.com/KomyakDev",
+      "knownLinesChanged": 91
+    },
+    {
+      "githubId": 101683475,
+      "login": "Koranir",
+      "url": "https://github.com/Koranir",
+      "knownLinesChanged": 8
+    },
+    {
+      "githubId": 145912020,
+      "login": "Kronbii",
+      "url": "https://github.com/Kronbii",
+      "knownLinesChanged": 472
+    },
+    {
+      "githubId": 6045770,
+      "login": "landkirk",
+      "url": "https://github.com/landkirk",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 21205085,
+      "login": "Lavodan",
+      "url": "https://github.com/Lavodan",
+      "knownLinesChanged": 456
+    },
+    {
+      "githubId": 103515231,
+      "login": "leivadev",
+      "url": "https://github.com/leivadev",
+      "knownLinesChanged": 14
+    },
+    {
+      "githubId": 111151429,
+      "login": "lentscode",
+      "url": "https://github.com/lentscode",
+      "knownLinesChanged": 12
+    },
+    {
+      "githubId": 80011647,
+      "login": "leo-210",
+      "url": "https://github.com/leo-210",
+      "knownLinesChanged": 527
+    },
+    {
+      "githubId": 31961987,
+      "login": "LJoyL",
+      "url": "https://github.com/LJoyL",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 117084283,
+      "login": "LoackyBit",
+      "url": "https://github.com/LoackyBit",
+      "knownLinesChanged": 146
+    },
+    {
+      "githubId": 37497007,
+      "login": "loan-mgt",
+      "url": "https://github.com/loan-mgt",
+      "knownLinesChanged": 103
+    },
+    {
+      "githubId": 273446204,
+      "login": "Loncile",
+      "url": "https://github.com/Loncile",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 208885653,
+      "login": "LoSt543215543",
+      "url": "https://github.com/LoSt543215543",
+      "knownLinesChanged": 9356
+    },
+    {
+      "githubId": 213108789,
+      "login": "lounnight",
+      "url": "https://github.com/lounnight",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 83251865,
+      "login": "LucasLion",
+      "url": "https://github.com/LucasLion",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 206740608,
+      "login": "Luke-Dawes",
+      "url": "https://github.com/Luke-Dawes",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 70640336,
+      "login": "M-Zoldak",
+      "url": "https://github.com/M-Zoldak",
+      "knownLinesChanged": 3
+    },
+    {
+      "githubId": 13331718,
+      "login": "Maaxion",
+      "url": "https://github.com/Maaxion",
+      "knownLinesChanged": 1001
+    },
+    {
+      "githubId": 62471384,
+      "login": "MagnanJules",
+      "url": "https://github.com/MagnanJules",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 112713667,
+      "login": "mananlalwani",
+      "url": "https://github.com/mananlalwani",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 33766476,
+      "login": "martinIvovIv",
+      "url": "https://github.com/martinIvovIv",
+      "knownLinesChanged": 184
+    },
+    {
+      "githubId": 113981080,
+      "login": "MaxHT0x",
+      "url": "https://github.com/MaxHT0x",
+      "knownLinesChanged": 8
+    },
+    {
+      "githubId": 1703141,
+      "login": "mef51",
+      "url": "https://github.com/mef51",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 195354545,
+      "login": "Mehmet-KOZAN-bit",
+      "url": "https://github.com/Mehmet-KOZAN-bit",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 9480365,
+      "login": "mepoohsta",
+      "url": "https://github.com/mepoohsta",
+      "knownLinesChanged": 1064
+    },
+    {
+      "githubId": 169401073,
+      "login": "michaelabilliot",
+      "url": "https://github.com/michaelabilliot",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 168545120,
+      "login": "MichaelK05-dev",
+      "url": "https://github.com/MichaelK05-dev",
+      "knownLinesChanged": 10
+    },
+    {
+      "githubId": 96337712,
+      "login": "Michal-Martinek",
+      "url": "https://github.com/Michal-Martinek",
+      "knownLinesChanged": 76
+    },
+    {
+      "githubId": 197645380,
+      "login": "mike-s-zaugg",
+      "url": "https://github.com/mike-s-zaugg",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 4648811,
+      "login": "MitchZinck",
+      "url": "https://github.com/MitchZinck",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 38482240,
+      "login": "mokizzz",
+      "url": "https://github.com/mokizzz",
+      "knownLinesChanged": 65
+    },
+    {
+      "githubId": 6663832,
+      "login": "monerofglory",
+      "url": "https://github.com/monerofglory",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 123163473,
+      "login": "MRGhust",
+      "url": "https://github.com/MRGhust",
+      "knownLinesChanged": 2281
+    },
+    {
+      "githubId": 20174184,
+      "login": "mrh0",
+      "url": "https://github.com/mrh0",
+      "knownLinesChanged": 424
+    },
+    {
+      "githubId": 42696684,
+      "login": "Mubelotix",
+      "url": "https://github.com/Mubelotix",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 129913040,
+      "login": "MushroomLamp",
+      "url": "https://github.com/MushroomLamp",
+      "knownLinesChanged": 571
+    },
+    {
+      "githubId": 76899241,
+      "login": "Navaneethp007",
+      "url": "https://github.com/Navaneethp007",
+      "knownLinesChanged": 202
+    },
+    {
+      "githubId": 52211535,
+      "login": "neon0404",
+      "url": "https://github.com/neon0404",
+      "knownLinesChanged": 1613
+    },
+    {
+      "githubId": 72945143,
+      "login": "Nephty",
+      "url": "https://github.com/Nephty",
+      "knownLinesChanged": 161
+    },
+    {
+      "githubId": 61103309,
+      "login": "newhajinyoon",
+      "url": "https://github.com/newhajinyoon",
+      "knownLinesChanged": 3
+    },
+    {
+      "githubId": 31893343,
+      "login": "NewHappyRabbit",
+      "url": "https://github.com/NewHappyRabbit",
+      "knownLinesChanged": 110704
+    },
+    {
+      "githubId": 51273856,
+      "login": "NewYearNewPhil",
+      "url": "https://github.com/NewYearNewPhil",
+      "knownLinesChanged": 78
+    },
+    {
+      "githubId": 284086923,
+      "login": "Niels-600",
+      "url": "https://github.com/Niels-600",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 20048349,
+      "login": "Niketion",
+      "url": "https://github.com/Niketion",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 131297075,
+      "login": "noahschmal",
+      "url": "https://github.com/noahschmal",
+      "knownLinesChanged": 1271
+    },
+    {
+      "githubId": 29139583,
+      "login": "nomeaning-3336",
+      "url": "https://github.com/nomeaning-3336",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 84439677,
+      "login": "Nonolanlan1007",
+      "url": "https://github.com/Nonolanlan1007",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 106100863,
+      "login": "NotRocketfish",
+      "url": "https://github.com/NotRocketfish",
+      "knownLinesChanged": 256
+    },
+    {
+      "githubId": 55821122,
+      "login": "nottirb",
+      "url": "https://github.com/nottirb",
+      "knownLinesChanged": 68
+    },
+    {
+      "githubId": 83304149,
+      "login": "nwcubeok",
+      "url": "https://github.com/nwcubeok",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 344623669,
+      "login": "oggolow",
+      "url": "https://github.com/oggolow",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 206513245,
+      "login": "oleksandr-shysh",
+      "url": "https://github.com/oleksandr-shysh",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 76548146,
+      "login": "omrih4",
+      "url": "https://github.com/omrih4",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 72047913,
+      "login": "opressorMk2",
+      "url": "https://github.com/opressorMk2",
+      "knownLinesChanged": 96
+    },
+    {
+      "githubId": 31520530,
+      "login": "PapeThePope",
+      "url": "https://github.com/PapeThePope",
+      "knownLinesChanged": 236
+    },
+    {
+      "githubId": 257176116,
+      "login": "PatrickPlaysBadly",
+      "url": "https://github.com/PatrickPlaysBadly",
+      "knownLinesChanged": 24799
+    },
+    {
+      "githubId": 39978723,
+      "login": "Pesinario",
+      "url": "https://github.com/Pesinario",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 77597544,
+      "login": "PGrayCS",
+      "url": "https://github.com/PGrayCS",
+      "knownLinesChanged": 163
+    },
+    {
+      "githubId": 18530936,
       "login": "ph3t",
       "url": "https://github.com/ph3t",
       "knownLinesChanged": null
+    },
+    {
+      "githubId": 11999669,
+      "login": "pierrebrtr",
+      "url": "https://github.com/pierrebrtr",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 156579268,
+      "login": "PilkeySEK",
+      "url": "https://github.com/PilkeySEK",
+      "knownLinesChanged": 414
+    },
+    {
+      "githubId": 63370060,
+      "login": "pip-install-skills",
+      "url": "https://github.com/pip-install-skills",
+      "knownLinesChanged": 855
+    },
+    {
+      "githubId": 67611764,
+      "login": "plazmaezio",
+      "url": "https://github.com/plazmaezio",
+      "knownLinesChanged": 417
+    },
+    {
+      "githubId": 3941642,
+      "login": "Poddster",
+      "url": "https://github.com/Poddster",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 6507015,
+      "login": "prajaybasu",
+      "url": "https://github.com/prajaybasu",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 26827552,
+      "login": "q8gazy",
+      "url": "https://github.com/q8gazy",
+      "knownLinesChanged": 2037
+    },
+    {
+      "githubId": 54883972,
+      "login": "QuentinSiruguet",
+      "url": "https://github.com/QuentinSiruguet",
+      "knownLinesChanged": 68
+    },
+    {
+      "githubId": 3750161,
+      "login": "qunash",
+      "url": "https://github.com/qunash",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 16303372,
+      "login": "ralfisalhon",
+      "url": "https://github.com/ralfisalhon",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 49241765,
+      "login": "Readixyee",
+      "url": "https://github.com/Readixyee",
+      "knownLinesChanged": 1995
+    },
+    {
+      "githubId": 81098692,
+      "login": "remi-sim",
+      "url": "https://github.com/remi-sim",
+      "knownLinesChanged": 162
+    },
+    {
+      "githubId": 128714085,
+      "login": "RenanScarpin",
+      "url": "https://github.com/RenanScarpin",
+      "knownLinesChanged": 392
+    },
+    {
+      "githubId": 72417283,
+      "login": "Restart1000",
+      "url": "https://github.com/Restart1000",
+      "knownLinesChanged": 1656
+    },
+    {
+      "githubId": 239448334,
+      "login": "Restart2008",
+      "url": "https://github.com/Restart2008",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 10612874,
+      "login": "richardroy",
+      "url": "https://github.com/richardroy",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 265125243,
+      "login": "RickD004",
+      "url": "https://github.com/RickD004",
+      "knownLinesChanged": 99886
+    },
+    {
+      "githubId": 212920441,
+      "login": "Rikardo66The100",
+      "url": "https://github.com/Rikardo66The100",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 117674421,
+      "login": "RjManhas",
+      "url": "https://github.com/RjManhas",
+      "knownLinesChanged": 327
+    },
+    {
+      "githubId": 18369320,
+      "login": "rldtech",
+      "url": "https://github.com/rldtech",
+      "knownLinesChanged": 161
+    },
+    {
+      "githubId": 70318887,
+      "login": "robert-pitt-foodhub",
+      "url": "https://github.com/robert-pitt-foodhub",
+      "knownLinesChanged": 7
+    },
+    {
+      "githubId": 49276264,
+      "login": "rubenperezrial",
+      "url": "https://github.com/rubenperezrial",
+      "knownLinesChanged": 25
+    },
+    {
+      "githubId": 7389646,
+      "login": "ryanbarlow97",
+      "url": "https://github.com/ryanbarlow97",
+      "knownLinesChanged": 89241
+    },
+    {
+      "githubId": 32017924,
+      "login": "ryanhaticus",
+      "url": "https://github.com/ryanhaticus",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 20022818,
+      "login": "sajadhsm",
+      "url": "https://github.com/sajadhsm",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 7689616,
+      "login": "sambokai",
+      "url": "https://github.com/sambokai",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 60489622,
+      "login": "samisbakedham",
+      "url": "https://github.com/samisbakedham",
+      "knownLinesChanged": 11
+    },
+    {
+      "githubId": 59739923,
+      "login": "Saphereye",
+      "url": "https://github.com/Saphereye",
+      "knownLinesChanged": 207
+    },
+    {
+      "githubId": 171299481,
+      "login": "sardidefcon",
+      "url": "https://github.com/sardidefcon",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 135249826,
+      "login": "Sashazach",
+      "url": "https://github.com/Sashazach",
+      "knownLinesChanged": 2
+    },
+    {
+      "githubId": 6170744,
+      "login": "scamiv",
+      "url": "https://github.com/scamiv",
+      "knownLinesChanged": 7427
+    },
+    {
+      "githubId": 662325,
+      "login": "scottanderson",
+      "url": "https://github.com/scottanderson",
+      "knownLinesChanged": 50849
+    },
+    {
+      "githubId": 35589586,
+      "login": "seanlowe",
+      "url": "https://github.com/seanlowe",
+      "knownLinesChanged": 21
+    },
+    {
+      "githubId": 9029154,
+      "login": "SGunner2014",
+      "url": "https://github.com/SGunner2014",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 39768960,
+      "login": "shaan150",
+      "url": "https://github.com/shaan150",
+      "knownLinesChanged": 171
+    },
+    {
+      "githubId": 84329386,
+      "login": "sidneyprins",
+      "url": "https://github.com/sidneyprins",
+      "knownLinesChanged": 183
+    },
+    {
+      "githubId": 217411484,
+      "login": "Skigim",
+      "url": "https://github.com/Skigim",
+      "knownLinesChanged": 747
+    },
+    {
+      "githubId": 124316622,
+      "login": "SkyElder2",
+      "url": "https://github.com/SkyElder2",
+      "knownLinesChanged": 67
+    },
+    {
+      "githubId": 62844331,
+      "login": "slewinus",
+      "url": "https://github.com/slewinus",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 38007824,
+      "login": "Sorikairox",
+      "url": "https://github.com/Sorikairox",
+      "knownLinesChanged": 94
+    },
+    {
+      "githubId": 204943424,
+      "login": "SpeakIsntThere",
+      "url": "https://github.com/SpeakIsntThere",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 13247733,
+      "login": "spicydll",
+      "url": "https://github.com/spicydll",
+      "knownLinesChanged": 70
+    },
+    {
+      "githubId": 172284700,
+      "login": "SunnyBoyWTF",
+      "url": "https://github.com/SunnyBoyWTF",
+      "knownLinesChanged": 96006
+    },
+    {
+      "githubId": 190214756,
+      "login": "SwayLE3",
+      "url": "https://github.com/SwayLE3",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 60168596,
+      "login": "Tfc538",
+      "url": "https://github.com/Tfc538",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 311314205,
+      "login": "thebananamoon",
+      "url": "https://github.com/thebananamoon",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 145969603,
+      "login": "TheGiraffe3",
+      "url": "https://github.com/TheGiraffe3",
+      "knownLinesChanged": 670
+    },
+    {
+      "githubId": 49637204,
+      "login": "theRealestAEP",
+      "url": "https://github.com/theRealestAEP",
+      "knownLinesChanged": 266
+    },
+    {
+      "githubId": 176509399,
+      "login": "thomastschinkel",
+      "url": "https://github.com/thomastschinkel",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 10531605,
+      "login": "tiago154",
+      "url": "https://github.com/tiago154",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 469375,
+      "login": "Tidwell",
+      "url": "https://github.com/Tidwell",
+      "knownLinesChanged": 3834
+    },
+    {
+      "githubId": 200839865,
+      "login": "TigerMcSwane",
+      "url": "https://github.com/TigerMcSwane",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 103334266,
+      "login": "TKTK123456",
+      "url": "https://github.com/TKTK123456",
+      "knownLinesChanged": 965
+    },
+    {
+      "githubId": 84022203,
+      "login": "TLS15",
+      "url": "https://github.com/TLS15",
+      "knownLinesChanged": 125
+    },
+    {
+      "githubId": 51187395,
+      "login": "tnhnblgl",
+      "url": "https://github.com/tnhnblgl",
+      "knownLinesChanged": 524
+    },
+    {
+      "githubId": 58752526,
+      "login": "TomaszOleszko",
+      "url": "https://github.com/TomaszOleszko",
+      "knownLinesChanged": 231
+    },
+    {
+      "githubId": 73028283,
+      "login": "torturado",
+      "url": "https://github.com/torturado",
+      "knownLinesChanged": 85
+    },
+    {
+      "githubId": 95888269,
+      "login": "tropptr-torrptrop",
+      "url": "https://github.com/tropptr-torrptrop",
+      "knownLinesChanged": 222
+    },
+    {
+      "githubId": 274138422,
+      "login": "truffle383-byte",
+      "url": "https://github.com/truffle383-byte",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 218393619,
+      "login": "TsProphet94",
+      "url": "https://github.com/TsProphet94",
+      "knownLinesChanged": 1698
+    },
+    {
+      "githubId": 13869647,
+      "login": "TylerHanavan",
+      "url": "https://github.com/TylerHanavan",
+      "knownLinesChanged": 873
+    },
+    {
+      "githubId": 81583603,
+      "login": "U-LF",
+      "url": "https://github.com/U-LF",
+      "knownLinesChanged": 827
+    },
+    {
+      "githubId": 67076235,
+      "login": "UnBuiltTree",
+      "url": "https://github.com/UnBuiltTree",
+      "knownLinesChanged": 39
+    },
+    {
+      "githubId": 62628620,
+      "login": "unique-coder-124",
+      "url": "https://github.com/unique-coder-124",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 59091348,
+      "login": "unne27",
+      "url": "https://github.com/unne27",
+      "knownLinesChanged": 197
+    },
+    {
+      "githubId": 172914890,
+      "login": "VahantSharma",
+      "url": "https://github.com/VahantSharma",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 24507472,
+      "login": "VariableVince",
+      "url": "https://github.com/VariableVince",
+      "knownLinesChanged": 75030
+    },
+    {
+      "githubId": 161856415,
+      "login": "VectorSophie",
+      "url": "https://github.com/VectorSophie",
+      "knownLinesChanged": 743
+    },
+    {
+      "githubId": 114803120,
+      "login": "Vermylion",
+      "url": "https://github.com/Vermylion",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 214669790,
+      "login": "WillTHomeGit",
+      "url": "https://github.com/WillTHomeGit",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 54122840,
+      "login": "wjdunlop",
+      "url": "https://github.com/wjdunlop",
+      "knownLinesChanged": 141
+    },
+    {
+      "githubId": 66263633,
+      "login": "wneel",
+      "url": "https://github.com/wneel",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 3797184,
+      "login": "woodydrn",
+      "url": "https://github.com/woodydrn",
+      "knownLinesChanged": null
+    },
+    {
+      "githubId": 17177420,
+      "login": "wozniakpl",
+      "url": "https://github.com/wozniakpl",
+      "knownLinesChanged": 433
+    },
+    {
+      "githubId": 54374743,
+      "login": "wraith4081",
+      "url": "https://github.com/wraith4081",
+      "knownLinesChanged": 35860
+    },
+    {
+      "githubId": 112267398,
+      "login": "xTonai",
+      "url": "https://github.com/xTonai",
+      "knownLinesChanged": 4
+    },
+    {
+      "githubId": 22114578,
+      "login": "Xuarig",
+      "url": "https://github.com/Xuarig",
+      "knownLinesChanged": 91
+    },
+    {
+      "githubId": 144444400,
+      "login": "YoussfeCantCode",
+      "url": "https://github.com/YoussfeCantCode",
+      "knownLinesChanged": 313
+    },
+    {
+      "githubId": 110821381,
+      "login": "youtsuhodev",
+      "url": "https://github.com/youtsuhodev",
+      "knownLinesChanged": 32
+    },
+    {
+      "githubId": 99333209,
+      "login": "Zixer1",
+      "url": "https://github.com/Zixer1",
+      "knownLinesChanged": 14785
     }
   ]
 }
