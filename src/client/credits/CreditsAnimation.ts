@@ -27,7 +27,7 @@ export function animateCredits(
     logoStartMs + config.fadeDurationMs + config.sectionDelayMs;
   let resumeAt = performance.now() + sectionStartMs + config.fadeDurationMs;
 
-  container
+  const logoAnimation = container
     .querySelector<HTMLElement>("[data-credits-logo]")
     ?.animate([{ opacity: 0 }, { opacity: 1 }], {
       duration: config.fadeDurationMs,
@@ -149,11 +149,30 @@ export function animateCredits(
     lastTime = time;
     frame = requestAnimationFrame(tick);
   };
-  frame = requestAnimationFrame(tick);
-  return () => {
+  let motionQuery: MediaQueryList | undefined;
+  try {
+    motionQuery = window.matchMedia?.("(prefers-reduced-motion: reduce)");
+  } catch {
+    // Older browsers may not support this media query.
+  }
+  const onMotionChange = (event: MediaQueryListEvent) => {
+    if (!event.matches) return;
+    stop();
+    endingAnimation?.cancel();
+    sections.forEach((section) => {
+      section.style.removeProperty("opacity");
+      section.style.removeProperty("transition");
+    });
+  };
+  const stop = () => {
     abort.abort();
     timers.forEach(clearTimeout);
     if (endingTimer !== undefined) clearTimeout(endingTimer);
     cancelAnimationFrame(frame);
+    logoAnimation?.cancel();
+    motionQuery?.removeEventListener?.("change", onMotionChange);
   };
+  motionQuery?.addEventListener?.("change", onMotionChange);
+  frame = requestAnimationFrame(tick);
+  return stop;
 }

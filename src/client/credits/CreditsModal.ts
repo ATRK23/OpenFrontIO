@@ -95,7 +95,7 @@ export function openCredits(): void {
             class="w-[80%] max-w-2xl max-h-[50vh] object-contain"
           />
         </div>
-        <section data-credits-section class="mb-12">
+        <section data-credits-section class="mb-24 sm:mb-32">
           <h2 class="mb-6 text-3xl sm:text-4xl font-bold text-blue-200">
             ${translateText("credits.team")}
           </h2>
@@ -121,7 +121,7 @@ export function openCredits(): void {
           )}
           ${featuredPeople.length === 0 ? html`<p class="text-white/60">${translateText("credits.team_pending")}</p>` : null}
         </section>
-        <section data-credits-section class="mb-12">
+        <section data-credits-section class="mb-24 sm:mb-32">
           <h2 class="mb-6 text-3xl sm:text-4xl font-bold text-blue-200">
             ${translateText("credits.contributors")}
           </h2>
@@ -149,7 +149,7 @@ export function openCredits(): void {
             >${translateText("credits.contribute_code")}</a
           >
         </section>
-        <section data-credits-section class="mb-12">
+        <section data-credits-section class="mb-24 sm:mb-32">
           <h2 class="mb-6 text-3xl sm:text-4xl font-bold text-blue-200">
             ${translateText("credits.translators")}
           </h2>
